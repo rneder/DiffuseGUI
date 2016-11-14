@@ -1,0 +1,3 @@
+echo TEST
+echo $1, $2
+echo blabla, $3
