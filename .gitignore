@@ -1,3 +1,9 @@
+CODE/TEST
+OPERATING
+CODE/__pycache__
+# The python library
+lib_discus_suite*
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
