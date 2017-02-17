@@ -10,6 +10,13 @@ from macro_section import create_macro_menu
 from command_lang import create_command_language
 from suite_status import suite_status
 
+#
+#   This is the main Python file for the DISCUS_SUITE GUI
+#
+################################################################################
+#
+#   
+
 def deactivate(parent):
     parent.b_macro.menu.entryconfig(1, state='disabled')
     parent.b_cmd.config(state='disabled')
@@ -32,11 +39,17 @@ def activate_all(parent):
     activate(parent.note_buch.gui_diffev)
 
 class MENU_BAR(tk.Frame):
+    """
+       The menu bar MENU_BAR contains the commands and buttons 
+       at the main suite level.
+    """
+
     def __init__(self,master, user):
         tk.Frame.__init__(self,None, background='#FFFFFF')
         self.config(borderwidth=2, relief=tk.RAISED)
         self.grid()
         self.__create_bar(master, user)
+
     def donothing(self):
         nthg = DO_NOTHING()
 
@@ -86,10 +99,16 @@ class MENU_BAR(tk.Frame):
         'any important structure, as the DISCUS_SUITE will not '
         'ask to confirm an EXIT')
 
-        #InfoFrame
-        #self.Info = INFO(self)
+        # Bind the status changes to the relevant buttons: macro
+        self.b_macro.bind('<ButtonRelease-1>', lambda eff: suite_status.change(eff,  0))
 
 class NOTE_BOOK(tk.Frame):
+    """
+          The NOTE_BOOK contains three tabs for DISCUS, KUPLOT and DIFFEV
+          The DISCUS tab is open at GUI start. By clicking on another tab
+          the GUI send an "exit/kuplot" section to a macro if we are in 
+          learn mode. In any case the suite_status is updated. 
+    """
     def __init__(self, master, user, row_pos, col_pos, row_span, col_span):
         self.master = master
         tk.Frame.__init__ ( self, None, background='#DDDDDD')
@@ -129,10 +148,14 @@ class NOTE_BOOK(tk.Frame):
         'and R-value calculations \nDIFFEV a generic evolutionary '
         'refinement tool.')
         #
+        # Bind the tabs to the status update and default to suite
         self.nb.bind('<<NotebookTabChanged>>',lambda eff : suite_status.nbc(eff, self))
         suite_status(0)
 
 class DISCUS_SUITE(tk.Frame):
+    """
+          Main GUI section, create the bar and the note book
+    """
 
     def __init__(self, master):
         self.master = master
@@ -146,8 +169,16 @@ class DISCUS_SUITE(tk.Frame):
     def __createWidgets (self,master ):
         self.user = tk.IntVar()
         self.user.set(0)
+        #
+        # The menu bar does suite stuff, the note book does the 
+        # discus, kuplot and diffev stuff
+        #
         self.menu_baar= MENU_BAR(master, self.user)
         self.note_buch= NOTE_BOOK(master, self.user, 2, 0, 1, 2)
+        #
+        # Radiobuttons to switch between a basic user mode and an advanced mode.
+        # IN advanced mode macro learn is available as well as the explicit
+        # command line options like interactive sessions, loops and if constructs.
         #
         self.R1 =tk.Radiobutton(self, text='Basic Mode', variable=self.user,
                                 value=0,command=lambda: deactivate_all(self),
@@ -156,11 +187,17 @@ class DISCUS_SUITE(tk.Frame):
                                 value=1,command=lambda: activate_all(self),
                                 activeforeground='#FF0000',
                                 foreground='#0000FF')
-
+        #
+        # grid everything
+        #
         self.R1.grid(row=0, column=0, stick='W', padx=(0,20))
         self.R2.grid(row=1, column=0, stick='W', padx=(0,20))
         self.menu_baar.grid(row=0, column=1)
+        # deactivate all advanced stuff by default
         deactivate_all(self)
+        #
+        #  Define ToolTips
+        #
         self.R1_ttp = CreateToolTip(self.R1, \
         'In the basic mode you have access to the menu driven tasks.')
         self.R2_ttp = CreateToolTip(self.R2, \
