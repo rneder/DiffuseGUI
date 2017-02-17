@@ -170,7 +170,7 @@ class DISCUS_SUITE(tk.Frame):
 def main():
     suite.initialize_suite()
     root = tk.Tk()
-    root.minsize(width=600, height=600)
+    root.minsize(width=800, height=600)
     root.configure(bg='white')
     root.lift()
     discus_suite_gui = DISCUS_SUITE(root)
