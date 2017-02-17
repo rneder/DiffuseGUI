@@ -4,7 +4,19 @@ from support import control_label, COLORS, command_gui, CreateToolTip
 from loop_section import create_loop_submenu
 from conditional_section import create_if_submenu
 
+#
+#   This module contains all stuff related to command language use
+#   Interactive sessions
+#   The "command language" button for:
+#         sessions
+#         a single interactive command
+#         loops and if-constructions
+#
 def suite_session(parent, prog):
+    #
+    #   despite the (old) name, a generic interface to start an
+    #   interactive session
+    #
 #   turn_off(self.b_command, self.b_macro, self.b_loop, 
 #       self.b_if, self.b_help,self.b_exit)
     control_label(parent, 'interactive', prog, 3)
@@ -12,6 +24,10 @@ def suite_session(parent, prog):
 #       self.b_if, self.b_help,self.b_exit)
 
 def create_command_language(parent, prog, pos_row, pos_col):
+    #
+    #  The generic command language menu
+    #  Can be used from all sections
+    #
     parent.b_cmd = tk.Menubutton(parent, text='Command\nlanguage',
         activeforeground=COLORS.ok_active,
         foreground=COLORS.ok_front
