@@ -3,6 +3,9 @@ from tkinter import ttk
 from loop_defs import *
 from support import COLORS, CreateToolTip
 
+#
+#   This module contains the details for setting up an "if" construction
+#
 class  if_gui(tk.Frame):
     def __init__(self, parent_frame, parent_menu, prog, mode):
         tk.Frame.__init__ ( self, parent_frame )
@@ -99,12 +102,14 @@ class  if_gui(tk.Frame):
         if LOOPS.level == 0 and LOOPS.lblock_read == False:
             suite.gui_do_init(self.section_name,line)
             number = LOOPS.level
+            LOOPS.set_lblock_read(True)
+            self.destroy()
         else:
-           suite.gui_do_insert(self.section_name,line)
-           number = LOOPS.level+1
-           LOOPS.set_level(number)
-           LOOPS.set_lblock_read(True)
-           self.destroy()
+            suite.gui_do_insert(self.section_name,line)
+            number = LOOPS.level+1
+            LOOPS.set_level(number)
+            LOOPS.set_lblock_read(True)
+            self.destroy()
 
     def ifif_elseif(self):
         global suite_gui_lblock_read
