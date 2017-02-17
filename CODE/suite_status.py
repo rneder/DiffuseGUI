@@ -28,11 +28,13 @@ class suite_status:
         if suite_status.STATUS == 0:  # We were in SUITE, just go to section
             if abs(new) == 1:             # Switch to DISCUS
                 line = 'discus'
+                suite.suite_learn(line)
             elif abs(new) == 2:           # Switch to KUPLOT
                 line = 'kuplot'
+                suite.suite_learn(line)
             elif abs(new) == 3:           # Switch to DIFFEV
                 line = 'diffev'
-            suite.suite_learn(line)
+                suite.suite_learn(line)
             suite_status.STATUS = new     # Store current status
         elif suite_status.STATUS == 1:    # We were in DISCUS
             if abs(new) == 0:             # Need to exit DISCUS
