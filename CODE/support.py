@@ -83,6 +83,25 @@ def RBN_STYLES(parent):
                                     background=[('active',  "#FAFAFA"), 
                                                 ('disabled',"#A0A0A0"), 
                                                 ('selected',"#F0F0F0")])
+
+
+def get_wave():
+     symbols     = []
+     wavelengths = []
+     snew        = ['0']
+     wnew        = ['0']
+     nwave = suite.discus_get_wave_number()
+     for i in range(nwave):
+        symbol, wave = suite.discus_get_wave_symbol(i+1)
+        line = symbol.decode()[0]
+        for j in range(len(symbol)-1):
+           line = line + symbol.decode()[j+1]
+        snew[0] = line
+        symbols = symbols + snew 
+        wnew[0] = wave
+        wavelengths = wavelengths + wnew
+     return nwave, symbols, wavelengths
+
 def is_empty(any_structure):
    if any_structure:
       return False
@@ -188,6 +207,12 @@ def turn_on(*pargs):
     for widget in pargs:
        widget.config(state="normal")
        widget.update()
+#
+#  Round a number from DISCUS to significant digits 
+#
+def round_rbn(number, digits):
+    number = float(int(number*10**digits+0.5)/10**digits)
+    return number
 
 ###def create_exit_button(parent, pos_row, pos_col):
 ###   parent.b_exit = ttk.Button(parent, text="Exit", 

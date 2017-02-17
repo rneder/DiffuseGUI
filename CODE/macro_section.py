@@ -135,7 +135,7 @@ def create_macro_menu(parent,prog,pos_row,pos_col):
                        foreground=COLORS.ok_front)
       parent.b_macro.menu.entryconfig(1,state="normal")
       parent.b_macro.menu.entryconfig(2,state="disabled")
-      parent.b_macro.grid(row=pos_row, column=pos_col, sticky=tk.W)
+      parent.b_macro.grid(row=pos_row, column=pos_col, sticky='EWNS')
       parent.b_macro_ttp = CreateToolTip(parent.b_macro,\
       "Load and execute a macro at the current DISCUS_SUITE section. "
       "A macro is a prerecorded list of DISCUS_SUITE commands, that "
