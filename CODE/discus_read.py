@@ -123,6 +123,8 @@ class READ_STRU_FR(tk.Frame):
         self.label_fle.grid(row=2, column=0, columnspan=3)
         self.acc.grid(row=5, column=3)
         self.acc.configure(state='disabled')
+        line = 'read'
+        suite.suite_learn(line)
 
 
     def display_file(self, parent):
