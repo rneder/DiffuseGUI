@@ -88,6 +88,7 @@ class macro_gui(tk.Frame):
       if LOOPS.lblock_read:
          LOOPS.do_send_command(self.section_name, line)
       else:
+         suite.suite_learn(line)
          suite.execute_macro(self.section_name, line)
 
    def macro_learn(self):
