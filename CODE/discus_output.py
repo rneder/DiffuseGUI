@@ -5,8 +5,7 @@ from exit_button import create_exit_button
 from file_stuff import file_new 
 from lib_discus_suite import *
 
-def exit_command(parent,i):
-    i=1
+def exit_command(parent,four_last):
     line = 'exit'
     suite.discus_output(line, four_last)
 
@@ -91,18 +90,18 @@ class DISCUS_OUTPUT_FR(tk.Frame):
         self.acc = ttk.Button(self, text='Run', 
                 command=lambda: self.write_file(parent, four_last))
 #       create_exit_button(self, 'discus', 6, 6, create_exit_button.donothing, (0, 0))
-        create_exit_button(self, 'discus', 6, 6, exit_command,(parent,0))
+        create_exit_button(self, 'discus', 6, 6, exit_command,(parent,four_last))
         #
-        self.caption.grid(  row=0, column=0, columnspan=5)
+        self.caption.grid(  row=0, column=0, columnspan=5, pady=(10,10))
         self.fileb.grid(    row=1, column=0)
         #
         self.label_fle.grid(row=2, column=0, columnspan=5, padx=(10,20), sticky='W')
         self.label_val.grid(row=3, column=0, sticky='EWNS')
-        self.val.grid(      row=3, column=1, sticky='EWNS')
-        self.valScroll.grid(row=3, column=2, sticky='E')
+        self.val.grid(      row=3, column=1, sticky='EWNS', pady=(5,0))
+        self.valScroll.grid(row=3, column=2, sticky='E', pady=(5,0))
         self.label_frm.grid(row=3, column=3, sticky='EWNS', padx=(5,0))
-        self.frm.grid(      row=3, column=4, sticky='EWNS')
-        self.frmScroll.grid(row=3, column=5, sticky='E')
+        self.frm.grid(      row=3, column=4, sticky='EWNS', pady=(5,0))
+        self.frmScroll.grid(row=3, column=5, sticky='E', pady=(5,0))
         self.acc.grid(      row=5, column=6)
         #
         self.acc.configure(state='disabled')

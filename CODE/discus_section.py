@@ -70,8 +70,8 @@ class discus_gui(tk.Frame):
        self.b_fourmenu.menu.entryconfig(3,state='normal')
        self.b_fourmenu.menu.entryconfig(4,state='normal')
        self.b_fourmenu.menu.entryconfig(6,state='disabled')
-       self.b_fourmenu.menu.entryconfig(6,state='normal')
-#      self.b_fourmenu.configure(state='disabled')
+#      self.b_fourmenu.menu.entryconfig(6,state='normal')
+       self.b_fourmenu.configure(state='disabled')
 
 #
 #  Place all elements

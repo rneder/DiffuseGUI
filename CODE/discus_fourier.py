@@ -273,7 +273,7 @@ class SINGLE_FOUR_FR(tk.Frame):
 ##          self.entry_ener.configure(state='disabled')
 ##          self.rad_type.set(0)
 
-        self.caption.grid(row=0,column=0,pady=(5,5),columnspan=8)
+        self.caption.grid(row=0,column=0,columnspan=8,pady=(10,10))
         self.label_h.grid(row=1,column=1,sticky='EW')
         self.label_k.grid(row=1,column=2,sticky='EW')
         self.label_l.grid(row=1,column=3,sticky='EW')

@@ -201,7 +201,7 @@ class DISCUS_POWDER_FR(tk.Frame):
         create_exit_button(self,'discus',11,8,self.exit_command,(parent,0))
         #
         # Grid all elements that were not placed via functions
-        self.caption.grid     (row=0, column=0, columnspan=8, sticky='NS', pady=(5,5))
+        self.caption.grid     (row=0, column=0, columnspan=8, sticky='NS', pady=(10,10))
         self.label_mode.grid  (row=1, column=0, columnspan=1, sticky='EW')
         self.mode.grid        (row=1, column=1, columnspan=2, sticky='W')
         self.label_axis.grid  (row=3, column=0, columnspan=1, sticky='EW')
@@ -257,6 +257,8 @@ class DISCUS_POWDER_FR(tk.Frame):
         suite.discus_calc_powder(line)
         line = 'exit'
         suite.discus_calc_powder(line)
+        parent.b_fourmenu.menu.entryconfig(6,state='normal')
+        # Close menu
         self.destroy()
         #
     def show_powder(self, parent):

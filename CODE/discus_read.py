@@ -50,7 +50,7 @@ class READ_CELL_FR(tk.Frame):
         self.acc = ttk.Button(self, text='Run', command=lambda: self.display_file(parent))
         create_exit_button(self, 'discus', 6, 3, exit_command,(parent,0))
         #
-        self.caption.grid(row=0, column=0, columnspan=5)
+        self.caption.grid(row=0, column=0, columnspan=5, pady=(10,10))
         self.fileb.grid(row=1, column=0)
         self.treat.grid(row=1, column=3)
         self.R1.grid(row=2, column=3, sticky=tk.W)
@@ -113,12 +113,13 @@ class READ_STRU_FR(tk.Frame):
         self.caption=ttk.Label(self, text='Read an old structure from file')
         self.fileb = ttk.Button(self, text='Open',
                    command=lambda: file_open(self))
-        self.label_fle = ttk.Label(self, textvariable=self.filename, relief=tk.RAISED)
+        self.label_fle = ttk.Label(self, textvariable=self.filename, 
+                   foreground='#FF0000', relief=tk.RAISED)
         self.acc = ttk.Button(self, text='Run', command=lambda: self.display_file(parent))
 #       create_exit_button(self,'discus',6,3,create_exit_button.donothing,(0,0))
         create_exit_button(self, 'discus', 6, 3, exit_command,(parent,0))
 
-        self.caption.grid(row=0,column=0, columnspan=5)
+        self.caption.grid(row=0,column=0, columnspan=5, pady=(10,10))
         self.fileb.grid(row=1, column=0)
         self.label_fle.grid(row=2, column=0, columnspan=3)
         self.acc.grid(row=5, column=3)

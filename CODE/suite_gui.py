@@ -182,11 +182,12 @@ class DISCUS_SUITE(tk.Frame):
         #
         self.R1 =tk.Radiobutton(self, text='Basic Mode', variable=self.user,
                                 value=0,command=lambda: deactivate_all(self),
-                                activeforeground='#F00', foreground='#00F')
+                                background=COLORS.bg_normal,activebackground=COLORS.bg_active,
+                                activeforeground=COLORS.ok_active, foreground=COLORS.ok_front)
         self.R2 =tk.Radiobutton(self, text='Advanced Mode', variable=self.user,
                                 value=1,command=lambda: activate_all(self),
-                                activeforeground='#FF0000',
-                                foreground='#0000FF')
+                                background=COLORS.bg_normal,activebackground=COLORS.bg_active,
+                                activeforeground=COLORS.ok_active, foreground=COLORS.ok_front)
         #
         # grid everything
         #

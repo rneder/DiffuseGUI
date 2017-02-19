@@ -155,7 +155,7 @@ class DISCUS_PDF_FR(tk.Frame):
         create_exit_button(self,'discus',11,8,self.exit_command,(parent,0))
         #
         # Grid all elements that were not placed via functions
-        self.caption.grid     (row=0, column=0, columnspan=9, sticky='NS', pady=(5,5))
+        self.caption.grid     (row=0, column=0, columnspan=9, sticky='NS', pady=(10,10))
         self.label_limits.grid(row=2, column=0, columnspan=1, sticky='EW')
 #       self.label_min.grid   (row=1, column=1, columnspan=1, sticky='EW')
         self.label_max.grid   (row=1, column=1, columnspan=1, sticky='EW')
