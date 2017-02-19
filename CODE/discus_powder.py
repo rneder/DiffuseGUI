@@ -11,8 +11,8 @@ from lib_discus_suite import *
 class DISCUS_POWDER_FR(tk.Frame):
     def __init__(self, parent):
         tk.Frame.__init__ ( self, parent )
-        self.config(borderwidth=2, relief=tk.RAISED,background=COLORS.fr_read)
-        self.grid(row=2,column=0,columnspan=8, sticky='EW')
+        self.config(borderwidth=2, relief=tk.RAISED, background=COLORS.fr_read)
+        self.grid(row=2, column=0, columnspan=8, sticky='EW')
         #
         #  Get Element symbols and characteristic wavelength from DISCUS
         nwave, self.symbols, self.wavelengths = get_wave()
@@ -97,16 +97,18 @@ class DISCUS_POWDER_FR(tk.Frame):
         #
         self.caption=ttk.Label(self, text='Powder diffraction calculations')
         self.label_mode = ttk.Label(self, text='Powder mode:')
-        self.mode = tk.Listbox(self, height=2, width=15,selectbackground='#FFFFFF',
-                   selectforeground='#0000FF',selectmode=tk.SINGLE)
+        self.mode = tk.Listbox(self, height=2, width=15, selectbackground=COLORS.en_back,
+                selectforeground=COLORS.en_fore, selectmode=tk.SINGLE
+                )
         self.mode.configure(exportselection=False)
         self.mode.insert(0,'Debye-Equation')
         self.mode.insert(1,'Rec. Spc. Integr.')
         self.mode.selection_set(mode)
         #
         self.label_axis = ttk.Label(self, text='Powder axis:')
-        self.axis = tk.Listbox(self, height=2, width=15,selectbackground='#FFFFFF',
-                   selectforeground='#0000FF',selectmode=tk.SINGLE)
+        self.axis = tk.Listbox(self, height=2, width=15, selectbackground=COLORS.en_back,
+                selectforeground=COLORS.en_fore, selectmode=tk.SINGLE
+                )
         self.axis.configure(exportselection=False)
 #       self.axis.insert(0,'d-star')
         self.axis.insert(0,'Q[A^-1]')
@@ -116,16 +118,24 @@ class DISCUS_POWDER_FR(tk.Frame):
         self.label_min    = ttk.Label(self, text='Min:')
         self.label_max    = ttk.Label(self, text='Max:')
         self.label_step   = ttk.Label(self, text='Step:')
-        self.entry_min = ttk.Entry(self,textvariable=self.lim_min, width=10, justify='right')
-        self.entry_max = ttk.Entry(self,textvariable=self.lim_max, width=10, justify='right')
-        self.entry_step= ttk.Entry(self,textvariable=self.lim_step,width=10, justify='right')
+        self.entry_min = ttk.Entry(self,textvariable=self.lim_min, width=10,
+                justify='right', background=COLORS.en_back, foreground=COLORS.en_fore
+                )
+        self.entry_max = ttk.Entry(self,textvariable=self.lim_max, width=10, 
+                justify='right', background=COLORS.en_back, foreground=COLORS.en_fore
+                )
+        self.entry_step= ttk.Entry(self,textvariable=self.lim_step,width=10, 
+                justify='right', background=COLORS.en_back, foreground=COLORS.en_fore
+                )
         # Set values and label according to powder axis
         self.convert_axis(0,0,qvalues, theta)
         #
         self.label_prof = ttk.Label(self, text='Profile:')
         self.prof_yScroll = tk.Scrollbar(self, orient=tk.VERTICAL)
-        self.prof_func = tk.Listbox(self, height=2, width=15,selectbackground='#FFFFFF',
-                selectforeground='#0000FF',selectmode=tk.SINGLE)
+        self.prof_func = tk.Listbox(self, height=2, width=15, 
+                selectbackground=COLORS.en_back,
+                selectforeground=COLORS.en_fore,selectmode=tk.SINGLE
+                )
         self.prof_func.configure(exportselection=False)
         self.prof_func.insert(0,'None')
         self.prof_func.insert(1,'Gauss')
@@ -134,19 +144,36 @@ class DISCUS_POWDER_FR(tk.Frame):
         self.prof_func.yview_scroll(profile, tk.UNITS)
         self.prof_yScroll['command'] = self.prof_func.yview
         self.label_prof_eta = ttk.Label(self, text='Profile eta:')
-        self.entry_prof_eta = ttk.Entry(self,textvariable=self.profile_eta, width=10, justify='right')
+        self.entry_prof_eta = ttk.Entry(self,textvariable=self.profile_eta, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
         self.label_prof_uvw = ttk.Label(self, text='Profile uvw:')
-        self.entry_prof_u   = ttk.Entry(self,textvariable=self.profile_u, width=10, justify='right')
-        self.entry_prof_v   = ttk.Entry(self,textvariable=self.profile_v, width=10, justify='right')
-        self.entry_prof_w   = ttk.Entry(self,textvariable=self.profile_w, width=10, justify='right')
-        self.label_prof_width = ttk.Label(self, text='Profile width:')
-        self.entry_prof_width = ttk.Entry(self,textvariable=self.profile_width, width=10, justify='right')
-        self.label_prof_units = ttk.Label(self, text='* FWHM')
+        self.entry_prof_u   = ttk.Entry(self,textvariable=self.profile_u, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
+        self.entry_prof_v   = ttk.Entry(self,textvariable=self.profile_v, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
+        self.entry_prof_w   = ttk.Entry(self,textvariable=self.profile_w, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore)
+        self.label_prof_width = ttk.Label(self, text='Profile width:'
+                )
+        self.entry_prof_width = ttk.Entry(self,textvariable=self.profile_width, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore)
+        self.label_prof_units = ttk.Label(self, text='* FWHM'
+                )
         #
         self.label_pref = ttk.Label(self, text='Preferred:')
         self.pref_yScroll = tk.Scrollbar(self, orient=tk.VERTICAL)
-        self.pref_func = tk.Listbox(self, height=2, width=15,selectbackground='#FFFFFF',
-                selectforeground='#0000FF',selectmode=tk.SINGLE)
+        self.pref_func = tk.Listbox(self, height=2, width=15,
+                selectbackground=COLORS.en_back,
+                selectforeground=COLORS.en_fore,selectmode=tk.SINGLE
+                )
         self.pref_func.configure(exportselection=False)
         self.pref_func.insert(0,'None')
         self.pref_func.insert(1,'Rietveld')
@@ -155,38 +182,67 @@ class DISCUS_POWDER_FR(tk.Frame):
         self.pref_func.yview_scroll(preferred, tk.UNITS)
         self.pref_yScroll['command'] = self.pref_func.yview
         self.label_pref_dp = ttk.Label(self, text='Pref. Damp:')
-        self.entry_pref_dp = ttk.Entry(self,textvariable=self.pref_dp, width=10, justify='right')
+        self.entry_pref_dp = ttk.Entry(self, textvariable=self.pref_dp, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
         self.label_pref_pt = ttk.Label(self, text='Pref. Frac:')
-        self.entry_pref_pt = ttk.Entry(self,textvariable=self.pref_pt, width=10, justify='right')
+        self.entry_pref_pt = ttk.Entry(self, textvariable=self.pref_pt, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
         self.label_pref_hkl= ttk.Label(self, text='Pref. HKL :')
-        self.entry_pref_h  = ttk.Entry(self,textvariable=self.pref_h, width=10, justify='right')
-        self.entry_pref_k  = ttk.Entry(self,textvariable=self.pref_k, width=10, justify='right')
-        self.entry_pref_l  = ttk.Entry(self,textvariable=self.pref_l, width=10, justify='right')
+        self.entry_pref_h  = ttk.Entry(self, textvariable=self.pref_h, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
+        self.entry_pref_k  = ttk.Entry(self, textvariable=self.pref_k, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
+        self.entry_pref_l  = ttk.Entry(self, textvariable=self.pref_l, 
+                width=10, justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
         #
         self.label_lp = ttk.Label(self, text='LP Corr.:')
         self.lp_yScroll = tk.Scrollbar(self, orient=tk.VERTICAL)
-        self.lp_func = tk.Listbox(self, height=2, width=15,selectbackground='#FFFFFF',
-                selectforeground='#0000FF',selectmode=tk.SINGLE)
+        self.lp_func = tk.Listbox(self, height=2, width=15,
+                selectbackground=COLORS.en_back,
+                selectforeground=COLORS.en_fore, selectmode=tk.SINGLE
+                )
         self.lp_func.configure(exportselection=False)
-        self.lp_func.insert(0,'None')
-        self.lp_func.insert(1,'Bragg-Br.')
-        self.lp_func.insert(2,'Neutron')
-        self.lp_func.insert(3,'Synchrotron')
+        self.lp_func.insert(0, 'None')
+        self.lp_func.insert(1, 'Bragg-Br.')
+        self.lp_func.insert(2, 'Neutron')
+        self.lp_func.insert(3, 'Synchrotron')
         self.lp_func.selection_set(lp)
         self.lp_func.yview_scroll(lp, tk.UNITS)
         self.lp_yScroll['command'] = self.lp_func.yview
         self.label_lp_ang = ttk.Label(self, text='Mono.Theta')
-        self.entry_lp_ang = ttk.Entry(self,textvariable=self.lp_ang, width=10, justify='right')
+        self.entry_lp_ang = ttk.Entry(self, textvariable=self.lp_ang, width=10, 
+                justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
         self.label_lp_fac = ttk.Label(self, text='Fraction:')
-        self.entry_lp_fac = ttk.Entry(self,textvariable=self.lp_fac, width=10, justify='right')
+        self.entry_lp_fac = ttk.Entry(self, textvariable=self.lp_fac, width=10, 
+                justify='right', background=COLORS.en_back, 
+                foreground=COLORS.en_fore
+                )
         #
-        discus_rad_menu(self, nwave, radiation, wvle, ener, ElementNumber, adp, ano, 1, 4)
+        discus_rad_menu(self, nwave, radiation, wvle, ener, ElementNumber, 
+                adp, ano, 1, 4
+                )
         #
         # Do bindings to powder axis
-        self.axis.bind('<ButtonRelease-1>', lambda eff: self.convert_axis(eff, 1, qvalues, theta))
-        self.prof_func.bind('<ButtonRelease-1>', lambda eff: self.convert_profile(eff, 1, profile_uvw, profile_delta))
-        self.pref_func.bind('<ButtonRelease-1>', lambda eff: self.convert_pref(eff, 1, pref_dp, pref_pt, pref_hkl))
-        self.lp_func.bind('<ButtonRelease-1>', lambda eff: self.convert_lp(eff, 1, lp_ang, lp_fac))
+        self.axis.bind('<ButtonRelease-1>', 
+                lambda eff: self.convert_axis(eff, 1, qvalues, theta))
+        self.prof_func.bind('<ButtonRelease-1>', 
+                lambda eff: self.convert_profile(eff, 1, profile_uvw, profile_delta))
+        self.pref_func.bind('<ButtonRelease-1>', 
+                lambda eff: self.convert_pref(eff, 1, pref_dp, pref_pt, pref_hkl))
+        self.lp_func.bind('<ButtonRelease-1>', 
+                lambda eff: self.convert_lp(eff, 1, lp_ang, lp_fac))
         #
         self.convert_profile(0,0,profile_uvw, profile_delta)
         self.convert_pref(0,0,pref_dp, pref_pt, pref_hkl)
@@ -201,50 +257,50 @@ class DISCUS_POWDER_FR(tk.Frame):
         create_exit_button(self,'discus',11,8,self.exit_command,(parent,0))
         #
         # Grid all elements that were not placed via functions
-        self.caption.grid     (row=0, column=0, columnspan=8, sticky='NS', pady=(10,10))
-        self.label_mode.grid  (row=1, column=0, columnspan=1, sticky='EW')
-        self.mode.grid        (row=1, column=1, columnspan=2, sticky='W')
-        self.label_axis.grid  (row=3, column=0, columnspan=1, sticky='EW')
-        self.axis.grid        (row=3, column=1, columnspan=2, sticky='W')
-        self.label_limits.grid(row=5, column=0, columnspan=1, sticky='EW')
-        self.label_min.grid   (row=4, column=1, columnspan=1, sticky='EW')
-        self.label_max.grid   (row=4, column=2, columnspan=1, sticky='EW')
-        self.label_step.grid  (row=4, column=3, columnspan=1, sticky='EW')
-        self.entry_min.grid   (row=5, column=1, columnspan=1, sticky='EW')
-        self.entry_max.grid   (row=5, column=2, columnspan=1, sticky='EW')
-        self.entry_step.grid  (row=5, column=3, columnspan=1, sticky='EW')
-        self.label_prof.grid  (row=6, column=0, columnspan=1, sticky='EW')
-        self.prof_func.grid   (row=6, column=1, columnspan=1, sticky='EW')
-        self.prof_yScroll.grid(row=6, column=2, columnspan=1, sticky='W')
-        self.label_prof_eta.grid(row=7, column=0, columnspan=1, sticky='EW')
-        self.entry_prof_eta.grid(row=7, column=1, columnspan=1, sticky='EW')
-        self.label_prof_uvw.grid(row=8, column=0, columnspan=1, sticky='EW')
-        self.entry_prof_u.grid(row=8, column=1, columnspan=1, sticky='EW')
-        self.entry_prof_v.grid(row=8, column=2, columnspan=1, sticky='EW')
-        self.entry_prof_w.grid(row=8, column=3, columnspan=1, sticky='EW')
+        self.caption.grid     (    row=0, column=0, columnspan=8, sticky='NS', pady=(10,10))
+        self.label_mode.grid  (    row=1, column=0, columnspan=1, sticky='EW')
+        self.mode.grid        (    row=1, column=1, columnspan=2, sticky='W')
+        self.label_axis.grid  (    row=3, column=0, columnspan=1, sticky='EW')
+        self.axis.grid        (    row=3, column=1, columnspan=2, sticky='W')
+        self.label_limits.grid(    row=5, column=0, columnspan=1, sticky='EW')
+        self.label_min.grid   (    row=4, column=1, columnspan=1, sticky='EW')
+        self.label_max.grid   (    row=4, column=2, columnspan=1, sticky='EW')
+        self.label_step.grid  (    row=4, column=3, columnspan=1, sticky='EW')
+        self.entry_min.grid   (    row=5, column=1, columnspan=1, sticky='EW')
+        self.entry_max.grid   (    row=5, column=2, columnspan=1, sticky='EW')
+        self.entry_step.grid  (    row=5, column=3, columnspan=1, sticky='EW')
+        self.label_prof.grid  (    row=6, column=0, columnspan=1, sticky='EW')
+        self.prof_func.grid   (    row=6, column=1, columnspan=1, sticky='EW')
+        self.prof_yScroll.grid(    row=6, column=2, columnspan=1, sticky='W')
+        self.label_prof_eta.grid(  row=7, column=0, columnspan=1, sticky='EW')
+        self.entry_prof_eta.grid(  row=7, column=1, columnspan=1, sticky='EW')
+        self.label_prof_uvw.grid(  row=8, column=0, columnspan=1, sticky='EW')
+        self.entry_prof_u.grid(    row=8, column=1, columnspan=1, sticky='EW')
+        self.entry_prof_v.grid(    row=8, column=2, columnspan=1, sticky='EW')
+        self.entry_prof_w.grid(    row=8, column=3, columnspan=1, sticky='EW')
         self.label_prof_width.grid(row=9, column=0, columnspan=1, sticky='EW')
         self.entry_prof_width.grid(row=9, column=1, columnspan=1, sticky='EW')
         self.label_prof_units.grid(row=9, column=2, columnspan=1, sticky='EW')
-        self.show.grid(row=9, column=8, columnspan=1, sticky='EW')
-        self.acc.grid(row=10, column=8, columnspan=1, sticky='EW')
-        self.label_pref.grid(row=10, column=0, columnspan=1, sticky='EW')
-        self.pref_func.grid   (row=10, column=1, columnspan=1, sticky='EW')
-        self.pref_yScroll.grid(row=10, column=2, columnspan=1, sticky='W')
-        self.label_pref_dp.grid(row=11, column=0, columnspan=1, sticky='EW')
-        self.entry_pref_dp.grid(row=11, column=1, columnspan=1, sticky='EW')
-        self.label_pref_pt.grid(row=12, column=0, columnspan=1, sticky='EW')
-        self.entry_pref_pt.grid(row=12, column=1, columnspan=1, sticky='EW')
-        self.label_pref_hkl.grid(row=13, column=0, columnspan=1, sticky='EW')
-        self.entry_pref_h.grid(row=13, column=1, columnspan=1, sticky='EW')
-        self.entry_pref_k.grid(row=13, column=2, columnspan=1, sticky='EW')
-        self.entry_pref_l.grid(row=13, column=3, columnspan=1, sticky='EW')
-        self.label_lp.grid(row=6, column=4, columnspan=1, sticky='EW')
-        self.lp_func.grid   (row=6, column=5, columnspan=1, sticky='EW',padx=(5,0))
-        self.lp_yScroll.grid(row=6, column=6, columnspan=1, sticky='W')
-        self.label_lp_ang.grid(row=7, column=4, columnspan=1, sticky='EW',padx=(5,0))
-        self.entry_lp_ang.grid(row=7, column=5, columnspan=1, sticky='EW')
-        self.label_lp_fac.grid(row=8, column=4, columnspan=1, sticky='EW',padx=(5,0))
-        self.entry_lp_fac.grid(row=8, column=5, columnspan=1, sticky='EW')
+        self.show.grid(            row=9, column=8, columnspan=1, sticky='EW')
+        self.acc.grid(             row=10, column=8, columnspan=1, sticky='EW')
+        self.label_pref.grid(      row=10, column=0, columnspan=1, sticky='EW')
+        self.pref_func.grid   (    row=10, column=1, columnspan=1, sticky='EW')
+        self.pref_yScroll.grid(    row=10, column=2, columnspan=1, sticky='W')
+        self.label_pref_dp.grid(   row=11, column=0, columnspan=1, sticky='EW')
+        self.entry_pref_dp.grid(   row=11, column=1, columnspan=1, sticky='EW')
+        self.label_pref_pt.grid(   row=12, column=0, columnspan=1, sticky='EW')
+        self.entry_pref_pt.grid(   row=12, column=1, columnspan=1, sticky='EW')
+        self.label_pref_hkl.grid(  row=13, column=0, columnspan=1, sticky='EW')
+        self.entry_pref_h.grid(    row=13, column=1, columnspan=1, sticky='EW')
+        self.entry_pref_k.grid(    row=13, column=2, columnspan=1, sticky='EW')
+        self.entry_pref_l.grid(    row=13, column=3, columnspan=1, sticky='EW')
+        self.label_lp.grid(        row=6, column=4, columnspan=1, sticky='EW')
+        self.lp_func.grid   (      row=6, column=5, columnspan=1, sticky='EW',padx=(5,0))
+        self.lp_yScroll.grid(      row=6, column=6, columnspan=1, sticky='W')
+        self.label_lp_ang.grid(    row=7, column=4, columnspan=1, sticky='EW',padx=(5,0))
+        self.entry_lp_ang.grid(    row=7, column=5, columnspan=1, sticky='EW')
+        self.label_lp_fac.grid(    row=8, column=4, columnspan=1, sticky='EW',padx=(5,0))
+        self.entry_lp_fac.grid(    row=8, column=5, columnspan=1, sticky='EW')
         #
         line = 'powder'
         suite.suite_learn(line)
@@ -416,8 +472,8 @@ class DISCUS_POWDER_FR(tk.Frame):
         suite.discus_calc_powder(line)
      
         
-    def convert_axis(self, eff=None, event=0, qvalues=['0.5','5.0','0.01'],
-                     theta=['5.0','120.0','0.01']):
+    def convert_axis(self, eff=None, event=0, qvalues=['0.5', '5.0', '0.01'],
+                     theta=['5.0', '120.0', '0.01']):
         #
         # Change of powder axis 
         # Handle if no selection was given
@@ -443,91 +499,115 @@ class DISCUS_POWDER_FR(tk.Frame):
                 self.label_min['text'] = '2Theta-min:'
                 self.label_max['text'] = '2Theta-max:'
                 self.label_step['text'] = '2Theta-step:'
-    def convert_profile(self, eff=None, event=0, uvw=['0.01','0.01', '0.01'], delta='0.5'):    
+    def convert_profile(self, eff=None, event=0, uvw=['0.01', '0.01', '0.01'], delta='0.5'):    
         #
         # Change of profile function
         # Handle if no selection was given
         if is_empty(self.prof_func.curselection()):
-            self.entry_prof_eta.configure(state='disabled')
-            self.entry_prof_u.configure(state='disabled')
-            self.entry_prof_v.configure(state='disabled')
-            self.entry_prof_w.configure(state='disabled')
-            self.entry_prof_width.configure(state='disabled')
+            self.label_prof_eta.configure(foreground=COLORS.dis_fore)
+            self.label_prof_uvw.configure(foreground=COLORS.dis_fore)
+            self.label_prof_width.configure(foreground=COLORS.dis_fore)
+            self.label_prof_units.configure(foreground=COLORS.dis_fore)
+            self.entry_prof_eta.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_prof_u.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_prof_v.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_prof_w.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_prof_width.configure(state='disabled', foreground=COLORS.dis_fore)
         else:
             if int(self.prof_func.curselection()[0]) == 0:
-                self.entry_prof_eta.configure(state='disabled')
-                self.entry_prof_u.configure(state='disabled')
-                self.entry_prof_v.configure(state='disabled')
-                self.entry_prof_w.configure(state='disabled')
-                self.entry_prof_width.configure(state='disabled')
+                self.label_prof_eta.configure(foreground=COLORS.dis_fore)
+                self.label_prof_uvw.configure(foreground=COLORS.dis_fore)
+                self.label_prof_width.configure(foreground=COLORS.dis_fore)
+                self.label_prof_units.configure(foreground=COLORS.dis_fore)
+                self.entry_prof_eta.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_u.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_v.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_w.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_width.configure(state='disabled', foreground=COLORS.dis_fore)
             elif int(self.prof_func.curselection()[0]) == 1:
- #              self.profile_w.set(str(delta ))
-                self.entry_prof_eta.configure(state='disabled')
-                self.entry_prof_u.configure(state='disabled')
-                self.entry_prof_v.configure(state='disabled')
-                self.entry_prof_w.configure(state='normal')
-                self.entry_prof_width.configure(state='normal')
+                self.label_prof_eta.configure(foreground=COLORS.dis_fore)
+                self.label_prof_uvw.configure(foreground=COLORS.nor_fore)
+                self.label_prof_width.configure(foreground=COLORS.nor_fore)
+                self.label_prof_units.configure(foreground=COLORS.nor_fore)
+                self.entry_prof_eta.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_u.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_v.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_prof_w.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_prof_width.configure(state='normal', foreground=COLORS.en_fore)
                 self.label_prof_uvw['text'] = 'Profile sigma:'
             elif int(self.prof_func.curselection()[0]) == 2:
- #              self.profile_u.set(str(uvw[0]))
- #              self.profile_v.set(str(uvw[1]))
- #              self.profile_w.set(str(uvw[2]))
-                self.entry_prof_eta.configure(state='normal')
-                self.entry_prof_u.configure(state='normal')
-                self.entry_prof_v.configure(state='normal')
-                self.entry_prof_w.configure(state='normal')
-                self.entry_prof_width.configure(state='normal')
+                self.label_prof_eta.configure(foreground=COLORS.nor_fore)
+                self.label_prof_uvw.configure(foreground=COLORS.nor_fore)
+                self.label_prof_width.configure(foreground=COLORS.nor_fore)
+                self.label_prof_units.configure(foreground=COLORS.nor_fore)
+                self.entry_prof_eta.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_prof_u.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_prof_v.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_prof_w.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_prof_width.configure(state='normal', foreground=COLORS.en_fore)
                 self.label_prof_uvw['text'] = 'Profile uvw:'
     def convert_pref(self, eff=None, event=0, dp=0, pt=0, hkl=['0.00','0.00', '1.00']):    
         #
         # Change of preferred orientation model
         # Handle if no selection was given
         if is_empty(self.pref_func.curselection()):
-            self.entry_pref_dp.configure(state='disabled')
-            self.entry_pref_pt.configure(state='disabled')
-            self.entry_pref_h.configure(state='disabled')
-            self.entry_pref_k.configure(state='disabled')
-            self.entry_pref_l.configure(state='disabled')
+            self.label_pref_dp.configure(foreground=COLORS.dis_fore)
+            self.label_pref_pt.configure(foreground=COLORS.dis_fore)
+            self.label_pref_hkl.configure(foreground=COLORS.dis_fore)
+            self.entry_pref_dp.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_pref_pt.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_pref_h.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_pref_k.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_pref_l.configure(state='disabled', foreground=COLORS.dis_fore)
         else:
             if int(self.pref_func.curselection()[0]) == 0:
-                self.entry_pref_dp.configure(state='disabled')
-                self.entry_pref_pt.configure(state='disabled')
-                self.entry_pref_h.configure(state='disabled')
-                self.entry_pref_k.configure(state='disabled')
-                self.entry_pref_l.configure(state='disabled')
+                self.label_pref_dp.configure(foreground=COLORS.dis_fore)
+                self.label_pref_pt.configure(foreground=COLORS.dis_fore)
+                self.label_pref_hkl.configure(foreground=COLORS.dis_fore)
+                self.entry_pref_dp.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_pref_pt.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_pref_h.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_pref_k.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_pref_l.configure(state='disabled', foreground=COLORS.dis_fore)
             elif (int(self.pref_func.curselection()[0]) == 1 or
                   int(self.pref_func.curselection()[0]) == 2
                  ):
-#               self.pref_dp.set(str(dp))
-#               self.pref_pt.set(str(pt))
-#               self.pref_h.set(str(hkl[0]))
-#               self.pref_k.set(str(hkl[1]))
-#               self.pref_l.set(str(hkl[2]))
-                self.entry_pref_dp.configure(state='normal')
-                self.entry_pref_pt.configure(state='normal')
-                self.entry_pref_h.configure(state='normal')
-                self.entry_pref_k.configure(state='normal')
-                self.entry_pref_l.configure(state='normal')
+                #
+                self.label_pref_dp.configure(foreground=COLORS.nor_fore)
+                self.label_pref_pt.configure(foreground=COLORS.nor_fore)
+                self.label_pref_hkl.configure(foreground=COLORS.nor_fore)
+                self.entry_pref_dp.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_pref_pt.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_pref_h.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_pref_k.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_pref_l.configure(state='normal', foreground=COLORS.en_fore)
     def convert_lp(self, eff=None, event=0, ang=0, fac=0):    
         #
         # Change of LP correction model
         # Handle if no selection was given
         if is_empty(self.lp_func.curselection()):
-            self.entry_lp_ang.configure(state='disabled')
-            self.entry_lp_fac.configure(state='disabled')
+            self.label_lp_ang.configure(foreground=COLORS.dis_fore)
+            self.label_lp_fac.configure(foreground=COLORS.dis_fore)
+            self.entry_lp_ang.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_lp_fac.configure(state='disabled', foreground=COLORS.dis_fore)
         else:
             if int(self.lp_func.curselection()[0]) == 0:
-                self.entry_lp_ang.configure(state='disabled')
-                self.entry_lp_fac.configure(state='disabled')
+                self.label_lp_ang.configure(foreground=COLORS.dis_fore)
+                self.label_lp_fac.configure(foreground=COLORS.dis_fore)
+                self.entry_lp_ang.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_lp_fac.configure(state='disabled', foreground=COLORS.dis_fore)
             elif int(self.lp_func.curselection()[0]) == 1:
-#               self.lp_ang.set(str(ang))
-                self.entry_lp_ang.configure(state='normal')
-                self.entry_lp_fac.configure(state='disabled')
+                self.label_lp_ang.configure(foreground=COLORS.nor_fore)
+                self.label_lp_fac.configure(foreground=COLORS.dis_fore)
+                self.entry_lp_ang.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_lp_fac.configure(state='disabled', foreground=COLORS.dis_fore)
             elif int(self.lp_func.curselection()[0]) == 2:
-                self.entry_lp_ang.configure(state='disabled')
-                self.entry_lp_fac.configure(state='disabled')
+                self.label_lp_ang.configure(foreground=COLORS.dis_fore)
+                self.label_lp_fac.configure(foreground=COLORS.dis_fore)
+                self.entry_lp_ang.configure(state='disabled', foreground=COLORS.dis_fore)
+                self.entry_lp_fac.configure(state='disabled', foreground=COLORS.dis_fore)
             elif int(self.lp_func.curselection()[0]) == 3:
-#               self.lp_ang.set(str(ang))
-#               self.lp_fac.set(str(fac))
-                self.entry_lp_ang.configure(state='normal')
-                self.entry_lp_fac.configure(state='normal')
+                self.label_lp_ang.configure(foreground=COLORS.nor_fore)
+                self.label_lp_fac.configure(foreground=COLORS.nor_fore)
+                self.entry_lp_ang.configure(state='normal', foreground=COLORS.en_fore)
+                self.entry_lp_fac.configure(state='normal', foreground=COLORS.en_fore)

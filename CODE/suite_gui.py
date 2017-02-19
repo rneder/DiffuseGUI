@@ -45,7 +45,7 @@ class MENU_BAR(tk.Frame):
     """
 
     def __init__(self,master, user):
-        tk.Frame.__init__(self,None, background='#FFFFFF')
+        tk.Frame.__init__(self,None, background=tk.white)
         self.config(borderwidth=2, relief=tk.RAISED)
         self.grid()
         self.__create_bar(master, user)
@@ -160,7 +160,7 @@ class DISCUS_SUITE(tk.Frame):
     def __init__(self, master):
         self.master = master
         master.title('DISCUS_SUITE')
-        tk.Frame.__init__ ( self, None, background='#FFFFFF' )
+        tk.Frame.__init__ ( self, None, background=tk.white )
         self.grid()
         self.style=ttk.Style()
         RbnStyles = RBN_STYLES(self)

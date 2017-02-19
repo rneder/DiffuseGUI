@@ -46,8 +46,10 @@ class  if_gui(tk.Frame):
     def if_start(self):
         self.l_tit = ttk.Label(self,text = 'If conditional')
         self.l_var = ttk.Label(self,text = 'Condition')
-        self.e_var   = tk.Entry(self, textvariable=self.counter,bg='#FFFFFF')
-        self.run     = ttk.Button(self, text='Define Content', command=lambda:self.initiate())
+        self.e_var   = tk.Entry(self, textvariable=self.counter, bg=COLORS.en_back)
+        self.run     = ttk.Button(self, text='Define Content', 
+                command=lambda:self.initiate()
+                )
         self.cancel  = ttk.Button(self, text='Exit', command=self.destroy)
 
 #       create_exit_button(self, self.section_name, 4,5,create_exit_button.donothing,(0,0))
@@ -61,8 +63,12 @@ class  if_gui(tk.Frame):
     def if_elseif(self):
         self.l_tit = ttk.Label(self,text = 'ElseIf conditional')
         self.l_var = ttk.Label(self,text = 'Condition')
-        self.e_var   = tk.Entry(self, textvariable=self.counter,bg='#FFFFFF')
-        self.run     = ttk.Button(self, text='Define Content', command=lambda:self.ifif_elseif())
+        self.e_var   = tk.Entry(self, textvariable=self.counter,
+                bg=COLORS.en_back
+                )
+        self.run     = ttk.Button(self, text='Define Content', 
+                command=lambda:self.ifif_elseif()
+                )
         self.cancel  = ttk.Button(self, text='Exit', command=self.destroy)
 
         self.l_tit.grid(row=0,column=0,columnspan=2)
@@ -73,7 +79,9 @@ class  if_gui(tk.Frame):
 
     def if_else(self):
         self.l_tit = ttk.Label(self,text = 'Else block')
-        self.run     = ttk.Button(self, text='Define Content', command=lambda:self.ifif_else())
+        self.run     = ttk.Button(self, text='Define Content', 
+                command=lambda:self.ifif_else()
+                )
         self.cancel  = ttk.Button(self, text='Exit', command=self.destroy)
 
         self.l_tit.grid(row=0,column=0,columnspan=2)
@@ -87,25 +95,25 @@ class  if_gui(tk.Frame):
         LOOPS.set_level(number)
         if LOOPS.level < 0:
             LOOPS.set_lblock_read(False)
-            self.par_menu.entryconfig(1,state='disabled')
-            self.par_menu.entryconfig(2,state='disabled')
-            self.par_menu.entryconfig(3,state='disabled')
+            self.par_menu.entryconfig(1, state='disabled')
+            self.par_menu.entryconfig(2, state='disabled')
+            self.par_menu.entryconfig(3, state='disabled')
             LOOPS.set_level(0)
 
     def initiate(self):
         global suite_gui_lblock_read
         line = ('if (' + str(self.counter.get()) + ') then' )
-        self.par_menu.entryconfig(1,state='normal')
-        self.par_menu.entryconfig(2,state='normal')
-        self.par_menu.entryconfig(3,state='normal')
+        self.par_menu.entryconfig(1, state='normal')
+        self.par_menu.entryconfig(2, state='normal')
+        self.par_menu.entryconfig(3, state='normal')
         #
         if LOOPS.level == 0 and LOOPS.lblock_read == False:
-            suite.gui_do_init(self.section_name,line)
+            suite.gui_do_init(self.section_name, line)
             number = LOOPS.level
             LOOPS.set_lblock_read(True)
             self.destroy()
         else:
-            suite.gui_do_insert(self.section_name,line)
+            suite.gui_do_insert(self.section_name, line)
             number = LOOPS.level+1
             LOOPS.set_level(number)
             LOOPS.set_lblock_read(True)
@@ -114,20 +122,20 @@ class  if_gui(tk.Frame):
     def ifif_elseif(self):
         global suite_gui_lblock_read
         line = ('elseif (' + str(self.counter.get()) + ') then' )
-        self.par_menu.entryconfig(1,state='normal')
-        self.par_menu.entryconfig(2,state='normal')
-        self.par_menu.entryconfig(3,state='normal')
-        suite.gui_do_insert(self.section_name,line)
+        self.par_menu.entryconfig(1, state='normal')
+        self.par_menu.entryconfig(2, state='normal')
+        self.par_menu.entryconfig(3, state='normal')
+        suite.gui_do_insert(self.section_name, line)
         LOOPS.set_lblock_read(True)
         self.destroy()
 
     def ifif_else(self):
         global suite_gui_lblock_read
         line = ('else')
-        self.par_menu.entryconfig(1,state='normal')
-        self.par_menu.entryconfig(2,state='normal')
-        self.par_menu.entryconfig(3,state='normal')
-        suite.gui_do_insert(self.section_name,line)
+        self.par_menu.entryconfig(1, state='normal')
+        self.par_menu.entryconfig(2, state='normal')
+        self.par_menu.entryconfig(3, state='normal')
+        suite.gui_do_insert(self.section_name, line)
         LOOPS.set_lblock_read(True)
         self.destroy()
 #
@@ -137,33 +145,33 @@ def create_if_submenu(parent,grandpa, prog):
 #
     parent.b_if = tk.Menu(parent, tearoff=0)
     parent.b_if.add_command(label='If', 
-        command=lambda : if_gui(grandpa, parent.b_if, prog, 'if_start'),
-        activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front,
-        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
-        )
+            command=lambda : if_gui(grandpa, parent.b_if, prog, 'if_start'),
+            activeforeground=COLORS.ok_active,
+            foreground=COLORS.ok_front,
+            background=COLORS.bg_normal, activebackground=COLORS.bg_active 
+            )
     parent.b_if.add_command(label='Else if',
-        command=lambda : if_gui(grandpa, parent.b_if, prog, 'if_else'),
-        activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front,
-        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
-        )
+            command=lambda : if_gui(grandpa, parent.b_if, prog, 'if_else'),
+            activeforeground=COLORS.ok_active,
+            foreground=COLORS.ok_front,
+            background=COLORS.bg_normal, activebackground=COLORS.bg_active 
+            )
     parent.b_if.add_command(label='Else',
-        command=lambda : if_gui(grandpa, parent.b_if, prog, 'else'),
-        activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front,
-        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
-        )
+            command=lambda : if_gui(grandpa, parent.b_if, prog, 'else'),
+            activeforeground=COLORS.ok_active,
+            foreground=COLORS.ok_front,
+            background=COLORS.bg_normal, activebackground=COLORS.bg_active 
+            )
     parent.b_if.add_command(label='Finish If',
-        command=lambda : if_gui(grandpa, parent.b_if, prog, 'endif'),
-        activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front,
-        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
-        )
+            command=lambda : if_gui(grandpa, parent.b_if, prog, 'endif'),
+            activeforeground=COLORS.ok_active,
+            foreground=COLORS.ok_front,
+            background=COLORS.bg_normal, activebackground=COLORS.bg_active 
+            )
     parent.b_if.entryconfig(0, state='normal')
     parent.b_if.entryconfig(1, state='disabled')
     parent.b_if.entryconfig(2, state='disabled')
     parent.b_if.entryconfig(3, state='disabled')
     parent.b_if_ttp = CreateToolTip(parent.b_if,\
-    'Define conditions that control the execution of command '
-    'blocks.')
+            'Define conditions that control the execution of command '
+            'blocks.')

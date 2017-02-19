@@ -21,9 +21,9 @@ class discus_gui(tk.Frame):
        self.discus_name = ttk.Label(self, text='DISCUS SECTION')
 #
        self.b_strumenu  = ttk.Menubutton(self, text='Build a basic\nStructure',
-                          style='Basic.TButton')
+               style='Basic.TButton')
        self.b_fourmenu  = ttk.Menubutton(self, text='Calculate PDF / \nFourier / Powder',
-                          style='Basic.TButton')
+               style='Basic.TButton')
        create_macro_menu(    self, 'discus',1, 4)
        create_command_language(self, 'discus', 1,6)
        self.b_help  = ttk.Button(self, text='Help', command=lambda: self.discus_help(user))
@@ -31,12 +31,16 @@ class discus_gui(tk.Frame):
        self.b_strumenu.menu=tk.Menu(self.b_strumenu, tearoff=0 )
        self.b_strumenu['menu'] = self.b_strumenu.menu
        self.b_strumenu.menu.add_command( label='Expand asymmetric unit',
-                                command=lambda: READ_CELL_FR(self),
-                                activeforeground='#F00',foreground='#00F')
+               command=lambda: READ_CELL_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_strumenu.menu.add_command(label='Read old structure', 
-                                command=lambda: READ_STRU_FR(self),
-                                activeforeground='#F00',foreground='#00F')
-       self.b_strumenu.menu.add_command(label='Define empty free space', command=self.donothing)
+               command=lambda: READ_STRU_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
+       self.b_strumenu.menu.add_command(label='Define empty free space', 
+               command=self.donothing
+               )
        self.b_strumenu.menu.add_command(label='Save ', command=self.donothing)
        self.b_strumenu.menu.add_command(label='Plot ', command=self.donothing)
        self.b_strumenu.menu.add_command(label='Import', command=self.donothing)
@@ -49,22 +53,27 @@ class discus_gui(tk.Frame):
        self.b_fourmenu.menu=tk.Menu(self.b_fourmenu, tearoff=0 )
        self.b_fourmenu['menu'] = self.b_fourmenu.menu
        self.b_fourmenu.menu.add_command( label='Calculate Fourier',
-                                command=lambda: SINGLE_FOUR_FR(self),
-                                activeforeground='#F00',foreground='#00F')
+               command=lambda: SINGLE_FOUR_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_fourmenu.menu.add_command( label='Zone Axis Pattern',
-                                command=lambda: SINGLE_FOUR_FR(self),
-                                activeforeground='#F00',foreground='#00F')
+               command=lambda: SINGLE_FOUR_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_fourmenu.menu.add_separator()
        self.b_fourmenu.menu.add_command( label='Powder Pattern',
-                                command=lambda: DISCUS_POWDER_FR(self),
-                                activeforeground='#F00',foreground='#00F')
+               command=lambda: DISCUS_POWDER_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_fourmenu.menu.add_command( label='PDF',
-                                command=lambda: DISCUS_PDF_FR(self),
-                                activeforeground='#F00',foreground='#00F')
+               command=lambda: DISCUS_PDF_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_fourmenu.menu.add_separator()
        self.b_fourmenu.menu.add_command( label='Save Pattern',
-                                command=lambda: DISCUS_OUTPUT_FR(self),
-                                activeforeground='#F00',foreground='#00F')
+               command=lambda: DISCUS_OUTPUT_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_fourmenu.menu.entryconfig(1,state='disabled')
        self.b_fourmenu.menu.entryconfig(3,state='disabled')
        self.b_fourmenu.menu.entryconfig(3,state='normal')

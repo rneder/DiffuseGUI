@@ -39,15 +39,15 @@ class loop_gui(tk.Frame):
             self.do_enddo()
 
     def do_classic(self):
-        self.l_tit    = ttk.Label(self,text = 'Do Loop')
-        self.l_var    = ttk.Label(self,text = 'Loop counter')
-        self.l_start  = ttk.Label(self,text = 'Start value ')
-        self.l_finish = ttk.Label(self,text = 'End value   ')
-        self.l_inc    = ttk.Label(self,text = 'Increment   ')
-        self.e_var    = tk.Entry(self, textvariable=self.counter, bg='#FFFFFF')
-        self.e_start  = tk.Entry(self, textvariable=self.start, bg='#FFFFFF')
-        self.e_finish = tk.Entry(self, textvariable=self.finish, bg='#FFFFFF')
-        self.e_inc    = tk.Entry(self, textvariable=self.increment, bg='#FFFFFF')
+        self.l_tit    = ttk.Label(self, text = 'Do Loop')
+        self.l_var    = ttk.Label(self, text = 'Loop counter')
+        self.l_start  = ttk.Label(self, text = 'Start value ')
+        self.l_finish = ttk.Label(self, text = 'End value   ')
+        self.l_inc    = ttk.Label(self, text = 'Increment   ')
+        self.e_var    = tk.Entry(self, textvariable=self.counter, bg=COLORS.en_back)
+        self.e_start  = tk.Entry(self, textvariable=self.start, bg=COLORS.en_back)
+        self.e_finish = tk.Entry(self, textvariable=self.finish, bg=COLORS.en_back)
+        self.e_inc    = tk.Entry(self, textvariable=self.increment, bg=COLORS.en_back)
         self.run      = ttk.Button(self, text='Define Content', command=lambda:self.initiate())
         self.cancel   = ttk.Button(self, text='Exit', command=self.destroy)
 
@@ -72,10 +72,10 @@ class loop_gui(tk.Frame):
 #       self.parent.b_loop.menu.entryconfig(3, state='normal')
         self.par_menu.entryconfig(3, state='normal')
         if LOOPS.level == 0 and LOOPS.lblock_read == False:
-            suite.gui_do_init(self.section_name,line)
+            suite.gui_do_init(self.section_name, line)
             number = LOOPS.level
         else:
-            suite.gui_do_insert(self.section_name,line)
+            suite.gui_do_insert(self.section_name, line)
             number = LOOPS.level+1
             LOOPS.set_level(number)
         LOOPS.set_lblock_read(True)
@@ -83,7 +83,7 @@ class loop_gui(tk.Frame):
 
     def do_enddo(self):
         line='enddo'
-        suite.gui_do_insert(self.section_name,line)
+        suite.gui_do_insert(self.section_name, line)
         number = LOOPS.level-1
         LOOPS.set_level(number)
         if LOOPS.level < 0:
@@ -125,10 +125,10 @@ def create_loop_menu(parent, prog, pos_row, pos_col):
           foreground=COLORS.ok_front,
           background=COLORS.bg_normal, activebackground=COLORS.bg_active 
           )
-      parent.b_loop.menu.entryconfig(0,state='normal')
-      parent.b_loop.menu.entryconfig(1,state='normal')
-      parent.b_loop.menu.entryconfig(2,state='normal')
-      parent.b_loop.menu.entryconfig(3,state='disabled')
+      parent.b_loop.menu.entryconfig(0, state='normal')
+      parent.b_loop.menu.entryconfig(1, state='normal')
+      parent.b_loop.menu.entryconfig(2, state='normal')
+      parent.b_loop.menu.entryconfig(3, state='disabled')
       parent.b_loop.grid(row=pos_row, column=pos_col, sticky=tk.W)
       parent.b_loop_ttp = CreateToolTip(parent.b_loop,\
       'Allows to repeat a set of commands/instructions')

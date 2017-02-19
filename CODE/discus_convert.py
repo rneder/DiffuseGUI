@@ -23,8 +23,8 @@ def convert_event(eff=None, parent=0, event=0):
             parent.ele.configure(state='disabled')
             if parent.rad_type.get() == 2:
                 parent.rad_type.set(0)
-                parent.entry_wvle.configure(state='normal')
-                parent.entry_ener.configure(state='disabled')
+                parent.entry_wvle.configure(state='normal', foreground=COLORS.en_fore)
+                parent.entry_ener.configure(state='disabled', foreground=COLORS.dis_fore)
         elif radiation == 2:
             # electrons, set keV, disable elements, 
             # if elements were chosen, choose wavelength
@@ -32,8 +32,8 @@ def convert_event(eff=None, parent=0, event=0):
             parent.ele.configure(state='disabled')
             if parent.rad_type.get() == 2:
                 parent.rad_type.set(1)
-                parent.entry_wvle.configure(state='disabled')
-                parent.entry_ener.configure(state='normal')
+                parent.entry_wvle.configure(state='disabled', foreground=COLORS.dis_fore)
+                parent.entry_ener.configure(state='normal', foreground=COLORS.en_fore)
 
 def convert_focus(eff=None, parent=0, event=0):
         # calculate wavelength if Radiobutton is in state Energy
@@ -50,14 +50,14 @@ def convert_setup(parent, mode):
             # Change of energy ==> wavelength Radiobutton
             calc_wvle = True
             parent.ele.configure(state='disabled')
-            parent.entry_wvle.configure(state='normal')
-            parent.entry_ener.configure(state='disabled')
+            parent.entry_wvle.configure(state='normal', foreground=COLORS.en_fore)
+            parent.entry_ener.configure(state='disabled', foreground=COLORS.dis_fore)
         elif mode ==-1:
             # Change of wavelength ==> energy Radiobutton
             calc_wvle = False
             parent.ele.configure(state='disabled')
-            parent.entry_wvle.configure(state='disabled')
-            parent.entry_ener.configure(state='normal')
+            parent.entry_wvle.configure(state='disabled', foreground=COLORS.dis_fore)
+            parent.entry_ener.configure(state='normal', foreground=COLORS.en_fore)
         elif mode == 2:
             # wavelength value was entered calc energy
             calc_wvle = False
@@ -71,8 +71,8 @@ def convert_setup(parent, mode):
             #   Switch to X-rays
             calc_wvle = False
             parent.ele.configure(state='normal')
-            parent.entry_wvle.configure(state='disabled')
-            parent.entry_ener.configure(state='disabled')
+            parent.entry_wvle.configure(state='disabled', foreground=COLORS.dis_fore)
+            parent.entry_ener.configure(state='disabled', foreground=COLORS.dis_fore)
             parent.rad.selection_clear(1,2)
             parent.rad.selection_set(0)
             element = int(parent.ele.curselection()[0])

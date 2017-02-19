@@ -27,26 +27,26 @@ class READ_CELL_FR(tk.Frame):
                 )
         self.treat = ttk.Label(self, text='Treat atoms with\nequal names as:')
         self.label_fle = ttk.Label(self, textvariable=self.filename,
-                relief=tk.RAISED, foreground='#FF0000'
+                relief=tk.RAISED, foreground=COLORS.ok_active
                 )
         self.R1 = tk.Radiobutton(self,text='Equal types ', 
                 variable=self.cell_type, value=0,
-                activeforeground='#FF0000', foreground='#0000FF'
+                activeforeground=COLORS.ok_active, foreground=COLORS.ok_front
                 )
         self.R2 = tk.Radiobutton(self,text='Sep. types',
                 variable=self.cell_type, value=1,
-                activeforeground='#FF9900', foreground='#0000FF'
+                activeforeground=COLORS.ok_active, foreground=COLORS.ok_front
                 )
         self.exp = ttk.Label(self, text='Expand to unit cells:')
         self.nx_l = ttk.Label(self, text='NX:')
         self.ny_l = ttk.Label(self, text='NY:')
         self.nz_l = ttk.Label(self, text='NZ:')
         self.nx = tk.Spinbox(self, from_=1, to=1000, width=10,
-                background='#FFFFFF', foreground='#0000FF')
+                background=COLORS.en_back, foreground=COLORS.ok_front)
         self.ny = tk.Spinbox(self, from_=1, to=1000, width=10,
-                background='#FFFFFF', foreground='#0000FF')
+                background=COLORS.en_back, foreground=COLORS.ok_front)
         self.nz = tk.Spinbox(self, from_=1, to=1000, width=10,
-                background='#FFFFFF', foreground='#0000FF')
+                background=COLORS.en_back, foreground=COLORS.ok_front)
         self.acc = ttk.Button(self, text='Run', command=lambda: self.display_file(parent))
         create_exit_button(self, 'discus', 6, 3, exit_command,(parent,0))
         #
@@ -114,7 +114,7 @@ class READ_STRU_FR(tk.Frame):
         self.fileb = ttk.Button(self, text='Open',
                    command=lambda: file_open(self))
         self.label_fle = ttk.Label(self, textvariable=self.filename, 
-                   foreground='#FF0000', relief=tk.RAISED)
+                   foreground=COLORS.ok_active, relief=tk.RAISED)
         self.acc = ttk.Button(self, text='Run', command=lambda: self.display_file(parent))
 #       create_exit_button(self,'discus',6,3,create_exit_button.donothing,(0,0))
         create_exit_button(self, 'discus', 6, 3, exit_command,(parent,0))

@@ -26,64 +26,69 @@ class CONSTANTS:
 #   COLOR DEFINITIONS
 #
 class COLORS:
-   ok_front ="#0000FF"  # Blue
-   ok_active="#FF0000"  # Red
-   bg_normal="#E0E0E0"  # mid   grey
-   bg_active="#FAFAFA"  # light grey
-   fr_back  ="#FFFFAA"  # light yellow
-   fr_diffev="#CCFFFF"  # light blue
-   fr_discus="#DDFFFF"  # light blue
-   fr_kuplot="#EEFFFF"  # light blue
-   fr_read  ="#FFFFEE"  # white'ish blue
+   ok_front  = '#0000FF'  # Blue
+   ok_active = '#FF0000'  # Red
+   bg_normal = '#E0E0E0'  # mid   grey
+   bg_active = '#FAFAFA'  # light grey
+   en_back   = '#FFFFFF'  # White for Entries
+   en_fore   = '#0000FF'  # Blue  for Entries
+   nor_fore  = '#000000'  # Black for normal   foreground
+   dis_fore  = '#A0A0A0'  # Black for disabled foreground
+   fr_back   = '#FFFFAA'  # light yellow
+   fr_diffev = '#CCFFFF'  # light blue
+   fr_discus = '#DDFFFF'  # light blue
+   fr_kuplot = '#EEFFFF'  # light blue
+   fr_read   = '#FFFFEE'  # white'ish blue
+   warning   = '#FF0000'  # Red 
 #
 #  Themes
 #
 def RBN_STYLES(parent):
-   parent.style.configure("TButton",          foreground=  "#0000FF",
-                                              background=  "#E0E0E0")
-   parent.style.map("TButton",     foreground=[('active',  "#FF0000"), 
-                                               ('disabled',"#909090")],
-                                   background=[('active',  "#FAFAFA"), 
-                                               ('disabled',"#D0D0D0")])
-   parent.style.configure("Basic.TButton",    foreground=  "#0000AA",
-                                              background=  "#E0E0E0")
+   parent.style.configure('TButton',          foreground=  '#0000FF',
+                                              background=  '#E0E0E0')
+   parent.style.map('TButton',     foreground=[('active',  '#FF0000'), 
+                                               ('disabled','#909090')],
+                                   background=[('active',  '#FAFAFA'), 
+                                               ('disabled','#D0D0D0')])
+   parent.style.configure('Basic.TButton',    foreground=  '#0000AA',
+                                              background=  '#E0E0E0')
 #                         font=('bold'))
 #
-   parent.style.configure("TMenubutton",      foreground= "#0000FF",
-                                              background= "#E0E0E0")
-   parent.style.map("TMenubutton", foreground=[('active'," #FF0000"), 
-                                               ('disabled',"#909090")],
-                                   background=[('active',  "#FAFAFA"),
-                                               ('disabled',"#D0D0D0")])
+   parent.style.configure('TMenubutton',      foreground= '#0000FF',
+                                              background= '#E0E0E0')
+   parent.style.map('TMenubutton', foreground=[('active',' #FF0000'), 
+                                               ('disabled','#909090')],
+                                   background=[('active',  '#FAFAFA'),
+                                               ('disabled','#D0D0D0')])
 #
-   parent.style.configure("TLabel",           foreground="#000000",
-                                              background="#E0E0E0")
-#  parent.style.map("TLabel",      foreground=[('active',"#00FF00")],
-#                                  background=[('active',"#FAFAFA")])
-   parent.style.configure("Control.TLabel",   foreground="#FF0000",
-                                              background="#FAFAFA")
-   parent.style.map("Control.TButton", foreground=[('active',"#00GG00")])
+   parent.style.configure('TLabel',           foreground='#000000',
+                                              background='#E0E0E0')
+#  parent.style.map('TLabel',      foreground=[('active','#00FF00')],
+#                                  background=[('active','#FAFAFA')])
+   parent.style.configure('Control.TLabel',   foreground='#FF0000',
+                                              background='#FAFAFA')
+   parent.style.map('Control.TButton', foreground=[('active','#00GG00')])
 #
-#  parent.style.configure("TFrame",           background="#C0FFFF")
-#  parent.style.configure("Discus.TFrame",    background="#DDFFFF")
-#  parent.style.configure("Discus.TFrame",    borderwidth=2, relief=tk.RAISED)
-#  parent.style.configure("Read.Discus.TFrame",    background="#FFFFEE")
-#  parent.style.configure("Read.Discus.TFrame",    borderwidth=2, relief=tk.RAISED)
-#  parent.style.configure("Kuplot.TFrame",    background="#EEFFFF")
-#  parent.style.configure("Kuplot.TFrame",    borderwidth=2, relief=tk.RAISED)
-   parent.style.configure("TNotebook",        foreground=  "#0000FF",
-                                              background=  "#E0E0E0")
-   parent.style.map("TNotebook",   foreground=[('active',  "#FF0000"), 
-                                               ('disabled',"#909090")],
-                                   background=[('active',  "#FAFAFA"), 
-                                               ('disabled',"#D0D0D0")])
-   parent.style.configure("TNotebook.Tab",    foreground=  "#0000FF",
-                                              background=  "#C0C0C0")
-   parent.style.map("TNotebook.Tab",foreground=[('active',  "#FF0000"), 
-                                                ('disabled',"#909090")],
-                                    background=[('active',  "#FAFAFA"), 
-                                                ('disabled',"#A0A0A0"), 
-                                                ('selected',"#F0F0F0")])
+#  parent.style.configure('TFrame',           background='#C0FFFF')
+#  parent.style.configure('Discus.TFrame',    background='#DDFFFF')
+#  parent.style.configure('Discus.TFrame',    borderwidth=2, relief=tk.RAISED)
+#  parent.style.configure('Read.Discus.TFrame',    background='#FFFFEE')
+#  parent.style.configure('Read.Discus.TFrame',    borderwidth=2, relief=tk.RAISED)
+#  parent.style.configure('Kuplot.TFrame',    background='#EEFFFF')
+#  parent.style.configure('Kuplot.TFrame',    borderwidth=2, relief=tk.RAISED)
+   parent.style.configure('TNotebook',        foreground=  '#0000FF',
+                                              background=  '#E0E0E0')
+   parent.style.map('TNotebook',   foreground=[('active',  '#FF0000'), 
+                                               ('disabled','#909090')],
+                                   background=[('active',  '#FAFAFA'), 
+                                               ('disabled','#D0D0D0')])
+   parent.style.configure('TNotebook.Tab',    foreground=  '#0000FF',
+                                              background=  '#C0C0C0')
+   parent.style.map('TNotebook.Tab',foreground=[('active',  '#FF0000'), 
+                                                ('disabled','#909090')],
+                                    background=[('active',  '#FAFAFA'), 
+                                                ('disabled','#A0A0A0'), 
+                                                ('selected','#F0F0F0')])
 
 
 def get_wave():
@@ -115,74 +120,72 @@ class command_gui(tk.Frame):
    def __init__(self, parent, prog):
       tk.Frame.__init__ ( self, parent )
       if prog == 'suite':
-         self.config(borderwidth=2, relief=tk.RAISED,background=COLORS.fr_back)
-         self.grid(row=1,column=0,columnspan=6)
+         self.config(borderwidth=2, relief=tk.RAISED, background=COLORS.fr_back)
+         self.grid(row=1, column=0, columnspan=6)
       elif prog == 'discus':
-         self.config(borderwidth=2, relief=tk.RAISED,background=COLORS.fr_read)
-         self.grid(row=2,column=0,columnspan=6)
+         self.config(borderwidth=2, relief=tk.RAISED, background=COLORS.fr_read)
+         self.grid(row=2, column=0, columnspan=6)
       elif prog == 'kuplot':
-         self.config(borderwidth=2, relief=tk.RAISED,background=COLORS.fr_read)
-         self.grid(row=3,column=0,columnspan=6)
+         self.config(borderwidth=2, relief=tk.RAISED, background=COLORS.fr_read)
+         self.grid(row=3, column=0, columnspan=6)
 
       self.section_name = prog
-      self.label = ttk.Label(self, text="Enter "+prog+" command")
-      self.cmd = tk.Entry(self, bg="#FFF")
-      self.cmd.bind('<KeyRelease-Return>',self.send_cmd_return)
-      self.acc = ttk.Button(self, text="Run", command=self.send_cmd)
-#                     activeforeground="#F00",foreground="#00F")
-      self.exit = ttk.Button(self, text="Exit", command=self.destroy)
-#                     activeforeground="#F00",foreground="#00F")
+      self.label = ttk.Label(self, text='Enter '+prog+' command')
+      self.cmd = tk.Entry(self, bg=COLORS.en_back)
+      self.cmd.bind('<KeyRelease-Return>', self.send_cmd_return)
+      self.acc = ttk.Button(self, text='Run', command=self.send_cmd)
+      self.exit = ttk.Button(self, text='Exit', command=self.destroy)
 
 
-      self.label.grid(row=0,column=0)
-      self.cmd.grid(row=1,column=0,columnspan=3)
-      self.acc.grid(row=2,column=1)
-      self.exit.grid(row=2,column=2)
+      self.label.grid(row=0, column=0)
+      self.cmd.grid(row=1, column=0, columnspan=3)
+      self.acc.grid(row=2, column=1)
+      self.exit.grid(row=2, column=2)
 
    def send_cmd(self):
           line = self.cmd.get()
           length = len(line)
           if LOOPS.lblock_read:
-             suite.gui_do_insert(self.section_name,line)
+             suite.gui_do_insert(self.section_name, line)
           else:
-             suite.execute_command(self.section_name,line)
+             suite.execute_command(self.section_name, line)
           self.cmd.delete(0,last=length)
 
-   def send_cmd_return(self,event):
+   def send_cmd_return(self, event):
           line = self.cmd.get()
           length = len(line)
           if LOOPS.lblock_read:
-             suite.gui_do_insert(self.section_name,line)
+             suite.gui_do_insert(self.section_name, line)
           else:
-             suite.execute_command(self.section_name,line)
-          self.cmd.delete(0,last=length)
+             suite.execute_command(self.section_name, line)
+          self.cmd.delete(0, last=length)
 
 def create_command_button(parent, prog, pos_row, pos_col):
-   parent.b_command   = ttk.Button(parent, text="Commands", 
+   parent.b_command   = ttk.Button(parent, text='Commands', 
                       command=lambda: command_gui(parent,prog)) 
 #                     activeforeground=COLORS.ok_active,
 #                     foreground=COLORS.ok_front)
-   parent.b_command.grid(row=pos_row,column=pos_col)
+   parent.b_command.grid(row=pos_row, column=pos_col)
    parent.b_command_tt = CreateToolTip(parent.b_command, \
-   "Open a window to type individual commands")
+   'Open a window to type individual commands')
 #
 #   CONTOL CLASS
 #
-def control_label(parent,task,prog,row_number):
+def control_label(parent, task, prog, row_number):
       #
-      if task == "interactive" :
-         infotext="Control in interactive window; type exit to return to GUI"
-      elif task == "help" :
-         infotext="Control in interactive window; hit ENTER key to return to GUI"
+      if task == 'interactive' :
+         infotext='Control in interactive window; type exit to return to GUI'
+      elif task == 'help' :
+         infotext='Control in interactive window; hit ENTER key to return to GUI'
       parent.l_control=ttk.Label(parent,
             text=infotext,
-            style="Control.TLabel")
-      parent.l_control.grid(row=row_number,column=0, columnspan=6, sticky=tk.W)
+            style='Control.TLabel')
+      parent.l_control.grid(row=row_number, column=0, columnspan=6, sticky=tk.W)
       parent.update()
       #
-      if task == "interactive" :
+      if task == 'interactive' :
          suite.interactive(prog)
-      elif task == "help" :
+      elif task == 'help' :
          suite.execute_help(prog)
       #
       parent.l_control.destroy()
@@ -194,7 +197,7 @@ class DO_NOTHING(tk.Frame):
    def __init__(self):
       tk.Frame.__init__(self,None)
       self.grid()
-      self.button = ttk.Button(self, text= "Do nothing botton; click to close",
+      self.button = ttk.Button(self, text= 'Do nothing botton; click to close',
                     command=self.destroy)
       self.button.grid(row=0,column=0)
 #
@@ -202,11 +205,11 @@ class DO_NOTHING(tk.Frame):
 #
 def turn_off(*pargs):
     for widget in pargs:
-       widget.config(state="disabled")
+       widget.config(state='disabled')
        widget.update()
 def turn_on(*pargs):
     for widget in pargs:
-       widget.config(state="normal")
+       widget.config(state='normal')
        widget.update()
 #
 #  Round a number from DISCUS to significant digits 

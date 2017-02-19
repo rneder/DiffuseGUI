@@ -24,36 +24,36 @@ class DISCUS_OUTPUT_FR(tk.Frame):
                 command=lambda: file_new(self)
                 )
         self.label_fle = ttk.Label(self, textvariable=self.filename,
-                relief=tk.RAISED, foreground='#FF0000'
+                relief=tk.RAISED, foreground=COLORS.warning
                 )
         #
         self.label_val = ttk.Label(self, text='Value')
         self.valScroll = tk.Scrollbar(self, orient=tk.VERTICAL)
-        self.val = tk.Listbox(self, height=2, width=15, selectbackground='#FFFFFF',
-                selectforeground='#0000FF', selectmode=tk.SINGLE,
+        self.val = tk.Listbox(self, height=2, width=15, selectbackground=COLORS.en_back,
+                selectforeground=COLORS.ok_front, selectmode=tk.SINGLE,
                 yscrollcommand=self.valScroll.set
                 )
         self.valScroll['command'] = self.val.yview
         self.val.configure(exportselection=False)
         if four_last > 0 and four_last < 4:  # Standard Fourier 
             self.val_list = ['inten', 'ampl', 'real', 'imag', 'phase', 'f2aver', 'faver2']
-            self.val.insert(0,'Intensity')
-            self.val.insert(1,'Amplitude')
-            self.val.insert(2,'Real part')
-            self.val.insert(3,'Imaginary part')
-            self.val.insert(4,'Phase angle')
-            self.val.insert(5,'<form^2>')
-            self.val.insert(6,'<form>^2')
+            self.val.insert(0, 'Intensity')
+            self.val.insert(1, 'Amplitude')
+            self.val.insert(2, 'Real part')
+            self.val.insert(3, 'Imaginary part')
+            self.val.insert(4, 'Phase angle')
+            self.val.insert(5, '<form^2>')
+            self.val.insert(6, '<form>^2')
         elif four_last < 0 or four_last == 4:  # Lots, zone axis
             self.val_list = ['inten']
             self.val.insert(0,'Intensity')
         elif four_last ==8 or four_last == 9:  # powder
             self.val_list = ['inten', 'S(Q)', 'F(Q)', 'f2aver', 'faver2']
-            self.val.insert(0,'Intensity')
-            self.val.insert(1,'S(Q)')
-            self.val.insert(2,'F(Q)')
-            self.val.insert(3,'<form^2>')
-            self.val.insert(4,'<form>^2')
+            self.val.insert(0, 'Intensity')
+            self.val.insert(1, 'S(Q)')
+            self.val.insert(2, 'F(Q)')
+            self.val.insert(3, '<form^2>')
+            self.val.insert(4, '<form>^2')
         elif four_last > 4 and four_last < 8:  # Patterson Inverse Diff-Four
             self.val_list = ['ampl']
             self.val.insert(0,'Amplitude')
@@ -64,21 +64,21 @@ class DISCUS_OUTPUT_FR(tk.Frame):
         #
         self.label_frm = ttk.Label(self, text='Format')
         self.frmScroll = tk.Scrollbar(self, orient=tk.VERTICAL)
-        self.frm = tk.Listbox(self, height=2, width=10, selectbackground='#FFFFFF',
-                selectforeground='#0000FF', selectmode=tk.SINGLE,
+        self.frm = tk.Listbox(self, height=2, width=10, selectbackground=COLORS.en_back,
+                selectforeground=COLORS.en_fore, selectmode=tk.SINGLE,
                 yscrollcommand=self.frmScroll.set
                 )
         self.frmScroll['command'] = self.frm.yview
         self.frm.configure(exportselection=False)
         if four_last > 0 and four_last < 8:  # Standard Fourier , Zone axis, Patterson
             self.frm_list = ['stan', 'mrc']
-            self.frm.insert(0,'Standard')
-            self.frm.insert(1,'MRC')
+            self.frm.insert(0, 'Standard')
+            self.frm.insert(1, 'MRC')
         elif four_last == 8 or four_last ==9 :  # Powder
             self.frm_list = ['powder', 'powder, tth', 'powder, q']
-            self.frm.insert(0,'Powder')
-            self.frm.insert(1,'Powder 2Theta')
-            self.frm.insert(1,'Powder Q-scale')
+            self.frm.insert(0, 'Powder')
+            self.frm.insert(1, 'Powder 2Theta')
+            self.frm.insert(1, 'Powder Q-scale')
         else:
             self.frm_list = ['stan']
             self.frm.insert(0,'None')

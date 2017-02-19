@@ -75,84 +75,124 @@ class DISCUS_PDF_FR(tk.Frame):
 #       self.label_min    = ttk.Label(self, text='Min:')
         self.label_max    = ttk.Label(self, text='Max:')
         self.label_step   = ttk.Label(self, text='Step:')
-#       self.entry_min = ttk.Entry(self,textvariable=self.lim_min, width=10, justify='right')
-        self.entry_max = ttk.Entry(self,textvariable=self.lim_max, width=10, justify='right')
-        self.entry_step= ttk.Entry(self,textvariable=self.lim_step,width=10, justify='right')
+#       self.entry_min = ttk.Entry(self,textvariable=self.lim_min, width=10, 
+#               justify='right', foreground=COLORS.en_fore
+#               )
+        self.entry_max = ttk.Entry(self, textvariable=self.lim_max, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
+        self.entry_step= ttk.Entry(self,textvariable=self.lim_step,width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
         self.label_rho0 = ttk.Label(self, text='Numb. density:')
-        self.R1 = tk.Radiobutton(self,text='Automatic', variable=self.rho0_type,
-                  value=1, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_rho0( 1))
+        self.R1 = tk.Radiobutton(self, text='Automatic', variable=self.rho0_type,
+                value=1, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                command=lambda: self.setup_rho0( 1)
+                )
         self.R0 = tk.Radiobutton(self,text='Value    ', variable=self.rho0_type,
-                  value=0, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_rho0( 0))
-        self.entry_rho0 = ttk.Entry(self,textvariable=self.rho0, width=10, justify='right')
+                value=0, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                command=lambda: self.setup_rho0( 0)
+                )
+        self.entry_rho0 = ttk.Entry(self,textvariable=self.rho0, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
         self.label_corr = ttk.Label(self, text='Corr. correct.:')
-        self.C0 = tk.Radiobutton(self,text='linear', variable=self.corr_type,
-                  value=0, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_corr( 0))
-        self.C1 = tk.Radiobutton(self,text='quadratic', variable=self.corr_type,
-                  value=1, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_corr( 1))
-        self.entry_corr_lin  = ttk.Entry(self,textvariable=self.corr_lin , width=10, justify='right')
-        self.entry_corr_quad = ttk.Entry(self,textvariable=self.corr_quad, width=10, justify='right')
+        self.C0 = tk.Radiobutton(self, text='linear', variable=self.corr_type,
+                value=0, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                command=lambda: self.setup_corr( 0)
+                )
+        self.C1 = tk.Radiobutton(self, text='quadratic', variable=self.corr_type,
+                value=1, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                command=lambda: self.setup_corr( 1)
+                )
+        self.entry_corr_lin  = ttk.Entry(self,textvariable=self.corr_lin , width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
+        self.entry_corr_quad = ttk.Entry(self,textvariable=self.corr_quad, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
         #
         self.label_peri = ttk.Label(self, text='Boundary cond.:')
-        self.P1 = tk.Radiobutton(self,text='periodic', variable=self.peri_type,
-                  value=1, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_peri( 0))
-        self.P0 = tk.Radiobutton(self,text='crystal', variable=self.peri_type,
-                  value=0, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_peri( 1))
+        self.P1 = tk.Radiobutton(self, text='periodic', variable=self.peri_type,
+                  value=1, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                  command=lambda: self.setup_peri( 0)
+                )
+        self.P0 = tk.Radiobutton(self, text='crystal', variable=self.peri_type,
+                  value=0, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                  command=lambda: self.setup_peri( 1)
+                )
 #       self.E0 = tk.Radiobutton(self,text='linear', variable=self.corr_type,
-#                 value=0, activeforeground='#F00',foreground='#00F', justify='left',
+#                 value=0, activeforeground=COLORS.ok_active,foreground=COLORS.ok_front, justify='left',
 #                 command=lambda: self.setup_corr( 0))
 #       self.E1 = tk.Radiobutton(self,text='quadratic', variable=self.corr_type,
-#                 value=1, activeforeground='#F00',foreground='#00F', justify='left',
+#                 value=1, activeforeground=COLORS.ok_active,foreground=COLORS.ok_front, justify='left',
 #                 command=lambda: self.setup_corr( 1))
         self.label_weight = ttk.Label(self, text='Scale factor:')
-        self.entry_weight = ttk.Entry(self,textvariable=self.weight, width=10, justify='right')
+        self.entry_weight = ttk.Entry(self, textvariable=self.weight, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
         self.label_finite = ttk.Label(self, text='Finite size corr.:')
-        self.F0 = tk.Radiobutton(self,text='infinite', variable=self.finite_type,
-                  value=0, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_finite( 0))
-        self.F1 = tk.Radiobutton(self,text='sphere', variable=self.finite_type,
-                  value=1, activeforeground='#F00',foreground='#00F', justify='left',
-                  command=lambda: self.setup_finite( 1))
-        self.entry_sphere = ttk.Entry(self,textvariable=self.sphere, width=10, justify='right')
+        self.F0 = tk.Radiobutton(self, text='infinite', variable=self.finite_type,
+                value=0, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                command=lambda: self.setup_finite( 0)
+                )
+        self.F1 = tk.Radiobutton(self, text='sphere', variable=self.finite_type,
+                value=1, activeforeground=COLORS.ok_active,
+                foreground=COLORS.ok_front, justify='left',
+                command=lambda: self.setup_finite( 1)
+                )
+        self.entry_sphere = ttk.Entry(self, textvariable=self.sphere, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
         #
         self.fileb = ttk.Button(self, text='Save as', command=lambda: file_new(self))
         self.label_fle = ttk.Label(self, textvariable=self.filename,
-                  relief=tk.RAISED, foreground='#FF0000'
-                  )
+                relief=tk.RAISED, foreground=COLORS.ok_active
+                )
 
         self.label_rad = ttk.Label(self,text='Radiation:')
         self.rad_type = tk.IntVar()
         self.rad_type.set(0)
-        self.rad = tk.Listbox(self, height=3, width=10,selectbackground='#FFFFFF',
-                   selectforeground='#0000FF',selectmode=tk.SINGLE)
+        self.rad = tk.Listbox(self, height=3, width=10,
+                selectbackground=COLORS.en_back,
+                selectforeground=COLORS.ok_active, selectmode=tk.SINGLE
+                )
         self.rad.configure(exportselection=False)
-        self.rad.insert(1,'X-ray')
-        self.rad.insert(2,'neutron')
-        self.rad.insert(3,'electron')
+        self.rad.insert(1, 'X-ray')
+        self.rad.insert(2, 'neutron')
+        self.rad.insert(3, 'electron')
         self.rad.selection_set(radiation)
         #
         #
         self.adp = tk.IntVar()
         self.adp.set(adp)
-        self.label_adp = ttk.Label(self,text='ADP:')
-        self.check_adp = ttk.Checkbutton(self,text='Use',variable=self.adp)
+        self.label_adp = ttk.Label(self, text='ADP:')
+        self.check_adp = ttk.Checkbutton(self, text='Use', variable=self.adp)
         #
-        self.label_qmax = ttk.Label(self,text='Qmax:')
-        self.entry_qmax = ttk.Entry(self,textvariable=self.qmax,width=10, justify='right')
-        self.label_qbroad = ttk.Label(self,text='Qbroad:')
-        self.entry_qbroad = ttk.Entry(self,textvariable=self.qbroad,width=10, justify='right')
-        self.label_qdamp = ttk.Label(self,text='Qdamp:')
-        self.entry_qdamp = ttk.Entry(self,textvariable=self.qdamp,width=10, justify='right')
+        self.label_qmax = ttk.Label(self, text='Qmax:')
+        self.entry_qmax = ttk.Entry(self, textvariable=self.qmax,width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
+        self.label_qbroad = ttk.Label(self, text='Qbroad:')
+        self.entry_qbroad = ttk.Entry(self, textvariable=self.qbroad, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
+        self.label_qdamp = ttk.Label(self, text='Qdamp:')
+        self.entry_qdamp = ttk.Entry(self, textvariable=self.qdamp, width=10, 
+                justify='right', foreground=COLORS.en_fore
+                )
         #
         self.show= ttk.Button(self, text='Show', command=lambda: self.show_pdf(parent))
         #
         self.acc = ttk.Button(self, text='Run', command=lambda: self.run_pdf(parent))
-        create_exit_button(self,'discus',11,8,self.exit_command,(parent,0))
+        create_exit_button(self,'discus', 11, 8, self.exit_command, (parent,0))
         #
         # Grid all elements that were not placed via functions
         self.caption.grid     (row=0, column=0, columnspan=9, sticky='NS', pady=(10,10))
@@ -208,24 +248,24 @@ class DISCUS_PDF_FR(tk.Frame):
 
     def setup_rho0(self, mode):
         if mode == 1:
-            self.entry_rho0.configure(state='disabled')
+            self.entry_rho0.configure(state='disabled', foreground=COLORS.dis_fore)
         else:
-            self.entry_rho0.configure(state='normal')
+            self.entry_rho0.configure(state='normal', foreground=COLORS.en_fore)
 
     def setup_finite(self, mode):
         if mode == 0:
-            self.entry_sphere.configure(state='disabled')
+            self.entry_sphere.configure(state='disabled', foreground=COLORS.dis_fore)
         else:
-            self.entry_sphere.configure(state='normal')
+            self.entry_sphere.configure(state='normal', foreground=COLORS.en_fore)
 
 
     def setup_corr(self, mode):
         if mode == 0:
-            self.entry_corr_lin.configure(state='normal')
-            self.entry_corr_quad.configure(state='disabled')
+            self.entry_corr_lin.configure(state='normal', foreground=COLORS.en_fore)
+            self.entry_corr_quad.configure(state='disabled', foreground=COLORS.dis_fore)
         else:
-            self.entry_corr_lin.configure(state='disabled')
-            self.entry_corr_quad.configure(state='normal')
+            self.entry_corr_lin.configure(state='disabled', foreground=COLORS.dis_fore)
+            self.entry_corr_quad.configure(state='normal', foreground=COLORS.en_fore)
 
     def setup_peri(self, mode):
         i = 0
