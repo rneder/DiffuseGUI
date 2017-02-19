@@ -28,6 +28,7 @@ class CONSTANTS:
 class COLORS:
    ok_front ="#0000FF"  # Blue
    ok_active="#FF0000"  # Red
+   bg_normal="#E0E0E0"  # mid   grey
    bg_active="#FAFAFA"  # light grey
    fr_back  ="#FFFFAA"  # light yellow
    fr_diffev="#CCFFFF"  # light blue

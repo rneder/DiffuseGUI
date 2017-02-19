@@ -30,31 +30,36 @@ def create_command_language(parent, prog, pos_row, pos_col):
     #
     parent.b_cmd = tk.Menubutton(parent, text='Command\nlanguage',
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_cmd.menu = tk.Menu(parent.b_cmd, tearoff=0)
     parent.b_cmd.configure(menu=parent.b_cmd.menu)
     parent.b_cmd.menu.add_command(label='Interactive session', 
         command=lambda : suite_session(parent, prog),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_cmd.menu.add_command(label='Single Command',
         command=lambda: command_gui(parent, prog),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     create_loop_submenu(parent.b_cmd, parent, prog)
     parent.b_cmd.menu.add_cascade(label='Loop',
         menu=parent.b_cmd.b_loop,
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         ) 
     create_if_submenu(parent.b_cmd, parent, prog)
     parent.b_cmd.menu.add_cascade(label='Conditionals',
         menu=parent.b_cmd.b_if,
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         ) 
     parent.b_cmd.menu.entryconfig(0,state='normal')
     parent.b_cmd.menu.entryconfig(1,state='normal')

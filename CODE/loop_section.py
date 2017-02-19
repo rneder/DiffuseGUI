@@ -104,22 +104,26 @@ def create_loop_menu(parent, prog, pos_row, pos_col):
       parent.b_loop.menu.add_command(label='Do', 
           command=lambda : loop_gui(parent, parent.b_loop.menu, prog, 'classic'),
           activeforeground=COLORS.ok_active,
-          foreground=COLORS.ok_front
+          foreground=COLORS.ok_front,
+          background=COLORS.bg_normal, activebackground=COLORS.bg_active 
           )
       parent.b_loop.menu.add_command(label='Do While',
           command=lambda : loop_gui(parent, parent.b_loop.menu, prog, 'while'),
           activeforeground=COLORS.ok_active,
-          foreground=COLORS.ok_front
+          foreground=COLORS.ok_front,
+          background=COLORS.bg_normal, activebackground=COLORS.bg_active 
           )
       parent.b_loop.menu.add_command(label='Do ... Until',
           command=lambda : loop_gui(parent, parent.b_loop.menu, prog, 'until'),
           activeforeground=COLORS.ok_active,
-          foreground=COLORS.ok_front
+          foreground=COLORS.ok_front,
+          background=COLORS.bg_normal, activebackground=COLORS.bg_active 
           )
       parent.b_loop.menu.add_command(label='Finish Loop',
           command=lambda : loop_gui(parent, parent.b_loop.menu, prog, 'enddo'),
           activeforeground=COLORS.ok_active,
-          foreground=COLORS.ok_front
+          foreground=COLORS.ok_front,
+          background=COLORS.bg_normal, activebackground=COLORS.bg_active 
           )
       parent.b_loop.menu.entryconfig(0,state='normal')
       parent.b_loop.menu.entryconfig(1,state='normal')
@@ -135,22 +139,26 @@ def create_loop_submenu(parent, grandpa, prog):
     parent.b_loop.add_command(label='Do', 
         command=lambda : loop_gui(grandpa, parent.b_loop, prog, 'classic'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_loop.add_command(label='Do While',
         command=lambda : loop_gui(grandpa, parent.b_loop, prog, 'while'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_loop.add_command(label='Do ... Until',
         command=lambda : loop_gui(grandpa, parent.b_loop, prog, 'until'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_loop.add_command(label='Finish Loop',
         command=lambda : loop_gui(grandpa, parent.b_loop, prog, 'enddo'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_loop.entryconfig(0, state='normal')
     parent.b_loop.entryconfig(1, state='disabled') # Not yet implemented

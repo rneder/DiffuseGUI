@@ -139,22 +139,26 @@ def create_if_submenu(parent,grandpa, prog):
     parent.b_if.add_command(label='If', 
         command=lambda : if_gui(grandpa, parent.b_if, prog, 'if_start'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_if.add_command(label='Else if',
         command=lambda : if_gui(grandpa, parent.b_if, prog, 'if_else'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_if.add_command(label='Else',
         command=lambda : if_gui(grandpa, parent.b_if, prog, 'else'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_if.add_command(label='Finish If',
         command=lambda : if_gui(grandpa, parent.b_if, prog, 'endif'),
         activeforeground=COLORS.ok_active,
-        foreground=COLORS.ok_front
+        foreground=COLORS.ok_front,
+        background=COLORS.bg_normal, activebackground=COLORS.bg_active 
         )
     parent.b_if.entryconfig(0, state='normal')
     parent.b_if.entryconfig(1, state='disabled')
