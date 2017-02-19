@@ -404,8 +404,8 @@ class DISCUS_POWDER_FR(tk.Frame):
             line = 'set lp, sync, ' + str(self.entry_lp_fac.get()) \
                              + ','  + str(self.entry_lp_ang.get())
             suite.discus_calc_powder(line)
-        line = 'show'
-        suite.discus_calc_powder(line)
+#       line = 'show'
+#       suite.discus_calc_powder(line)
         #
     def exit_command(self, parent,i):
         i=1
