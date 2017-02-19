@@ -8,6 +8,7 @@ from discus_read import READ_CELL_FR, READ_STRU_FR
 from discus_output import DISCUS_OUTPUT_FR
 from discus_fourier import SINGLE_FOUR_FR
 from discus_powder import DISCUS_POWDER_FR
+from discus_pdf import DISCUS_PDF_FR
 from suite_status import suite_status
 #
 class discus_gui(tk.Frame):
@@ -58,7 +59,7 @@ class discus_gui(tk.Frame):
                                 command=lambda: DISCUS_POWDER_FR(self),
                                 activeforeground='#F00',foreground='#00F')
        self.b_fourmenu.menu.add_command( label='PDF',
-                                command=lambda: SINGLE_FOUR_FR(self),
+                                command=lambda: DISCUS_PDF_FR(self),
                                 activeforeground='#F00',foreground='#00F')
        self.b_fourmenu.menu.add_separator()
        self.b_fourmenu.menu.add_command( label='Save Pattern',
@@ -67,7 +68,7 @@ class discus_gui(tk.Frame):
        self.b_fourmenu.menu.entryconfig(1,state='disabled')
        self.b_fourmenu.menu.entryconfig(3,state='disabled')
        self.b_fourmenu.menu.entryconfig(3,state='normal')
-       self.b_fourmenu.menu.entryconfig(4,state='disabled')
+       self.b_fourmenu.menu.entryconfig(4,state='normal')
        self.b_fourmenu.menu.entryconfig(6,state='disabled')
        self.b_fourmenu.menu.entryconfig(6,state='normal')
 #      self.b_fourmenu.configure(state='disabled')
