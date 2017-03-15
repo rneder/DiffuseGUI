@@ -152,7 +152,11 @@ class DISCUS_PDF_FR(tk.Frame):
                 justify='right', foreground=COLORS.en_fore
                 )
         #
-        self.fileb = ttk.Button(self, text='Save as', command=lambda: file_new(self))
+        typestring = 'DISCUS PDF files'
+        typeext = '*.grcalc *.gr *.pdf'
+        self.fileb = ttk.Button(self, text='Save as', 
+                command=lambda: file_new(self, typestring, typeext)
+                )
         self.label_fle = ttk.Label(self, textvariable=self.filename,
                 relief=tk.RAISED, foreground=COLORS.ok_active
                 )

@@ -17,11 +17,13 @@ class DISCUS_OUTPUT_FR(tk.Frame):
         #
         four_last = suite.discus_get_four_last()
         #
+        typestring = 'DISCUS output'
+        typeext = '*.inte *.real *.ampl *.imag *.phase'
         self.filename = tk.StringVar()
         self.filename.set('Filename undefined')
         self.caption = ttk.Label(self, text='Write Fourier pattern to disk')
         self.fileb = ttk.Button(self, text='Save as',
-                command=lambda: file_new(self)
+                command=lambda: file_new(self, typestring, typeext)
                 )
         self.label_fle = ttk.Label(self, textvariable=self.filename,
                 relief=tk.RAISED, foreground=COLORS.warning
@@ -44,9 +46,13 @@ class DISCUS_OUTPUT_FR(tk.Frame):
             self.val.insert(4, 'Phase angle')
             self.val.insert(5, '<form^2>')
             self.val.insert(6, '<form>^2')
+            typestring = 'DISCUS output'
+            typeext = '*.inte *.real *.ampl *.imag *.phase'
         elif four_last < 0 or four_last == 4:  # Lots, zone axis
             self.val_list = ['inten']
             self.val.insert(0,'Intensity')
+            typestring = 'DISCUS output'
+            typeext = '*.inte'
         elif four_last ==8 or four_last == 9:  # powder
             self.val_list = ['inten', 'S(Q)', 'F(Q)', 'f2aver', 'faver2']
             self.val.insert(0, 'Intensity')
@@ -54,12 +60,18 @@ class DISCUS_OUTPUT_FR(tk.Frame):
             self.val.insert(2, 'F(Q)')
             self.val.insert(3, '<form^2>')
             self.val.insert(4, '<form>^2')
+            typestring = 'DISCUS output'
+            typeext = '*.inte *.Q *.tth *.SQ *.FQ'
         elif four_last > 4 and four_last < 8:  # Patterson Inverse Diff-Four
             self.val_list = ['ampl']
             self.val.insert(0,'Amplitude')
+            typestring = 'DISCUS output'
+            typeext = '*.ampl'
         else:
             self.val_list = ['inten']
             self.val.insert(0,'None')
+            typestring = 'DISCUS output'
+            typeext = '*.inte'
         self.val.selection_set(0)
         #
         self.label_frm = ttk.Label(self, text='Format')

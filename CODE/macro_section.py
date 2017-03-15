@@ -36,7 +36,9 @@ class macro_gui(tk.Frame):
 
    def menu_run(self):
       self.l_titl = ttk.Label(self, text="Macro Run Menu")
-      self.b_open = ttk.Button(self, text="Open", command=self.file_open)
+      typestring = 'Macro files'
+      typeext    = '*.mac *.MAC'
+      self.b_open = ttk.Button(self, text="Open", command=lambda:self.file_open())
       self.l_file = ttk.Label(self, textvariable=self.macrofilename, relief=tk.RAISED)
       self.run    = ttk.Button(self, text="Run",  command=self.macro_run)
       self.cancel = ttk.Button(self, text="Exit", command=self.destroy)
@@ -61,7 +63,12 @@ class macro_gui(tk.Frame):
       self.cancel.grid(row=4,column=2, sticky=tk.E)
 
    def file_open(self):
-      self.macrofilename.set(filedialog.askopenfilename())
+      typestring = 'Macro files'
+      typeext    = '*.mac *.MAC'
+      self.macrofilename.set(filedialog.askopenfilename(
+              initialdir = '.', 
+              filetypes=((typestring  ,typeext ),('all files', '*.*')))
+              )
       line = str(self.macrofilename.get())
       number = suite.test_macro_param(line)
       self.num_par.set(number)

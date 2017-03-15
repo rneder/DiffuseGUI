@@ -38,7 +38,8 @@ class COLORS:
    fr_diffev = '#CCFFFF'  # light blue
    fr_discus = '#DDFFFF'  # light blue
    fr_kuplot = '#EEFFFF'  # light blue
-   fr_read   = '#FFFFEE'  # white'ish blue
+   fr_read   = '#FFFFEE'  # fairly light yellow
+   fr_sub    = '#FAFAE0'  # slightly light yellow
    warning   = '#FF0000'  # Red 
 #
 #  Themes
@@ -107,6 +108,36 @@ def get_wave():
         wnew[0] = wave
         wavelengths = wavelengths + wnew
      return nwave, symbols, wavelengths
+
+def get_spcgr():
+     spcgr_name  = []
+     spcgr_syst  = []
+     snew        = ['0']
+     synew       = ['0']
+     nspcgr = suite.discus_get_spcgr_number()
+     for i in range(nspcgr):
+        symbol, syst = suite.discus_get_spcgr_symbol(i+1)
+        line = symbol.decode()[0]
+        for j in range(len(symbol)-1):
+           line = line + symbol.decode()[j+1]
+        snew[0] = line
+        spcgr_name = spcgr_name + snew 
+        synew[0] = syst
+        spcgr_syst = spcgr_syst + synew
+     return nspcgr, spcgr_name, spcgr_syst
+
+def get_scat():
+     at_list  = []
+     anew     = ['0']
+     nscat  = suite.discus_get_nscat_number()
+     for i in range(nscat+1):
+        symbol = suite.discus_get_scat_symbol(i)
+        line = symbol.decode()[0]
+        for j in range(len(symbol)-1):
+           line = line + symbol.decode()[j+1]
+        anew[0] = line
+        at_list = at_list + anew 
+     return nscat, at_list
 
 def is_empty(any_structure):
    if any_structure:

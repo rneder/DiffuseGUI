@@ -4,7 +4,8 @@ from support import COLORS, control_label, is_empty, turn_off, turn_on, CreateTo
 from exit_button import create_exit_button
 from macro_section import create_macro_menu
 from command_lang import create_command_language
-from discus_read import READ_CELL_FR, READ_STRU_FR
+from discus_read import READ_CELL_FR, READ_STRU_FR, READ_FREE_FR, READ_IMPORT_FR
+from discus_save import SAVE_STRU_FR
 from discus_output import DISCUS_OUTPUT_FR
 from discus_fourier import SINGLE_FOUR_FR
 from discus_powder import DISCUS_POWDER_FR
@@ -39,11 +40,18 @@ class discus_gui(tk.Frame):
                activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
                )
        self.b_strumenu.menu.add_command(label='Define empty free space', 
-               command=self.donothing
+               command=lambda: READ_FREE_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
                )
-       self.b_strumenu.menu.add_command(label='Save ', command=self.donothing)
+       self.b_strumenu.menu.add_command(label='Save ', 
+               command=lambda: SAVE_STRU_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_strumenu.menu.add_command(label='Plot ', command=self.donothing)
-       self.b_strumenu.menu.add_command(label='Import', command=self.donothing)
+       self.b_strumenu.menu.add_command(label='Import', 
+               command=lambda: READ_IMPORT_FR(self),
+               activeforeground=COLORS.ok_active,foreground=COLORS.ok_front
+               )
        self.b_strumenu.menu.add_command(label='Export', command=self.donothing)
 #
        self.b_strumenu.menu.entryconfig(3,state='disabled')
